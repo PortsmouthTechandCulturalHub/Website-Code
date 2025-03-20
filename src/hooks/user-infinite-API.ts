@@ -2,6 +2,7 @@ import { SWRInfiniteConfiguration, SWRInfiniteKeyLoader } from "swr/infinite";
 import useSWRInfinite from "swr/infinite";
 import { apiRequest } from "@/lib/api";
 import { useCallback } from "react";
+import { Key } from "swr";
 
 interface UseInfiniteAPIOptions extends FetcherOptions, Omit<SWRInfiniteConfiguration, "fetcher"> {
   limit?: number | undefined;
@@ -35,7 +36,7 @@ function isCursorResponse<T>(response: CursorPaginatedResponse<T> | PagePaginate
   return paginationType === "cursor";
 }
 
-export function useInfiniteAPI<T>(endpoint: string, options: UseInfiniteAPIOptions = {}) {
+export function useInfiniteAPI<T>(endpoint: Key, options: UseInfiniteAPIOptions = {}) {
   const { limit = undefined, method, data, customHeaders, useAuthBaseUrl, fetchOptions, useAuth, paginationType = "page", customFetcher, ...swrOptions } = options;
 
   const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {

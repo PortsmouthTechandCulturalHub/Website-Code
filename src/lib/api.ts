@@ -1,4 +1,5 @@
 "use server";
+
 import { getSession } from "./cookies";
 import axios, { AxiosError, isAxiosError } from "axios";
 
@@ -7,7 +8,7 @@ const baseUrl2 = process.env.NEXT_PUBLIC_SERVER_URL2;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const apiRequest = async <T = any>(url: string, options: FetcherOptions = {}): Promise<T> => {
+export const apiRequest = async <T>(url: string, options: FetcherOptions = {}): Promise<T | string> => {
   const { method = "GET", data = null, customHeaders = {}, useAuthBaseUrl = false, fetchOptions = {}, useAuth = false, retry = 0, delay = 3000 } = options;
 
   const headers: Record<string, any> = {
@@ -74,7 +75,7 @@ export const apiRequest = async <T = any>(url: string, options: FetcherOptions =
   throw lastError!;
 };
 
-export const apiRequest_axios = async <T = any>(url: string, options: FetcherOptions = {}): Promise<T> => {
+export const apiRequest_axios = async <T>(url: string, options: FetcherOptions = {}): Promise<T | string> => {
   const { method = "GET", data = null, customHeaders = {}, useAuthBaseUrl = false, axiosConfig = {}, useAuth = false, retry = 0, delay = 3000 } = options;
 
   const headers: Record<string, any> = {
