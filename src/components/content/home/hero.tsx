@@ -1,6 +1,7 @@
+import React from "react";
+
 import { HeroTypes } from "@/app/variables";
 
-import React from "react";
 
 interface Props {
   hero: HeroTypes;

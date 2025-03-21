@@ -1,11 +1,10 @@
 import React from "react";
 
-import { hero, goal, stat, blog, testimonial } from "./variables";
-
-import Hero from "@/components/content/home/hero";
-import Goals from "@/components/content/home/goals";
-import Stats from "@/components/content/home/stats";
+import { hero, goal, stat, blog, testimonial } from "@/app/variables";
 import BlogPreview from "@/components/content/home/blog-preview";
+import Goals from "@/components/content/home/goals";
+import Hero from "@/components/content/home/hero";
+import Stats from "@/components/content/home/stats";
 import Testimonial from "@/components/content/home/testimonial";
 
 export default function Home() {

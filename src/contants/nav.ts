@@ -51,8 +51,4 @@ export const SERVICIES: NavType[] = [
     title: "Status",
     link: "/status",
   },
-  {
-    title: "Get involved",
-    link: "/get-involved",
-  },
 ];

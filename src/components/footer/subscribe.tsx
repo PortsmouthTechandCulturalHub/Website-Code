@@ -1,7 +1,7 @@
-import React from "react";
-
 import { Input } from "@heroui/react";
 import { Send } from "lucide-react";
+import React from "react";
+
 
 export default function Subscribe() {
   return (

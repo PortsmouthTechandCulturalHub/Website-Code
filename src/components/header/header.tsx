@@ -1,14 +1,13 @@
+import Image from "next/image";
 import React from "react";
 
-import Image from "next/image";
-
 import HeaderNav from "@/components/header/header-nav";
+import MobileMenu from "@/components/header/mobileMenu";
 import Button from "@/components/ui/button";
-import MobileMenu from "./mobileMenu";
 
 export default function Header() {
   return (
-    <div className="fixed z-50 flex sm:h-header h-sm-header w-full items-center justify-between bg-white px-pg">
+    <div className="fixed z-50 flex h-sm-header w-full items-center justify-between bg-white px-pg sm:h-header">
       <Image src="/images/logo.png" width={147} height={51} alt="Portsmouth" />
       <div className="max-md:hidden">
         <HeaderNav />

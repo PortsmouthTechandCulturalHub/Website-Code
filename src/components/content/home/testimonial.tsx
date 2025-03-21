@@ -1,7 +1,7 @@
 import React from "react";
 
-import SectionTitle from "@/components/common/sectionTitle";
 import { Testimonial as TestimonialTypes } from "@/app/variables";
+import SectionTitle from "@/components/common/sectionTitle";
 
 interface Props {
   testimonial: TestimonialTypes[];

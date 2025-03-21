@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Blog } from "@/app/variables";
-
 import SectionTitle from "@/components/common/sectionTitle";
 import Button from "@/components/ui/button";
 

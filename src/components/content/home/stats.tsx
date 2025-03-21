@@ -1,8 +1,8 @@
+import Image from "next/image";
 import React from "react";
 
 import { Stat } from "@/app/variables";
 import SectionTitle from "@/components/common/sectionTitle";
-import Image from "next/image";
 
 interface Props {
   stat: Stat[];

@@ -1,15 +1,28 @@
 "use server";
 
-import { getSession } from "./cookies";
 import axios, { AxiosError, isAxiosError } from "axios";
+
+import { getSession } from "@/lib/cookies";
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 const baseUrl2 = process.env.NEXT_PUBLIC_SERVER_URL2;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const apiRequest = async <T>(url: string, options: FetcherOptions = {}): Promise<T | string> => {
-  const { method = "GET", data = null, customHeaders = {}, useAuthBaseUrl = false, fetchOptions = {}, useAuth = false, retry = 0, delay = 3000 } = options;
+export const apiRequest = async <T>(
+  url: string,
+  options: FetcherOptions = {},
+): Promise<T | string> => {
+  const {
+    method = "GET",
+    data = null,
+    customHeaders = {},
+    useAuthBaseUrl = false,
+    fetchOptions = {},
+    useAuth = false,
+    retry = 0,
+    delay = 3000,
+  } = options;
 
   const headers: Record<string, any> = {
     "Content-Type": "application/json",
@@ -55,19 +68,31 @@ export const apiRequest = async <T>(url: string, options: FetcherOptions = {}): 
       }
 
       const contentType = response.headers.get("Content-Type");
-      return contentType?.includes("application/json") ? await response.json() : await response.text();
+      return contentType?.includes("application/json")
+        ? await response.json()
+        : await response.text();
     } catch (error: any) {
       lastError = error as Error;
       attempts++;
 
-      const isNetworkError = error instanceof TypeError || error.message.includes("fetch") || error.message.includes("aborted");
-      const isServerError = "cause" in error && typeof error.cause === "object" && "status" in error.cause && Number(error.cause.status) >= 500 && Number(error.cause.status) <= 599;
+      const isNetworkError =
+        error instanceof TypeError ||
+        error.message.includes("fetch") ||
+        error.message.includes("aborted");
+      const isServerError =
+        "cause" in error &&
+        typeof error.cause === "object" &&
+        "status" in error.cause &&
+        Number(error.cause.status) >= 500 &&
+        Number(error.cause.status) <= 599;
 
       if (attempts > retry || (!isNetworkError && !isServerError)) {
         throw lastError;
       }
 
-      console.warn(`Retrying ${url} (${retry - attempts + 1} attempts left): ${lastError.message}`);
+      console.warn(
+        `Retrying ${url} (${retry - attempts + 1} attempts left): ${lastError.message}`,
+      );
       await sleep(delay * Math.pow(2, attempts - 1));
     }
   }
@@ -75,8 +100,20 @@ export const apiRequest = async <T>(url: string, options: FetcherOptions = {}): 
   throw lastError!;
 };
 
-export const apiRequest_axios = async <T>(url: string, options: FetcherOptions = {}): Promise<T | string> => {
-  const { method = "GET", data = null, customHeaders = {}, useAuthBaseUrl = false, axiosConfig = {}, useAuth = false, retry = 0, delay = 3000 } = options;
+export const apiRequest_axios = async <T>(
+  url: string,
+  options: FetcherOptions = {},
+): Promise<T | string> => {
+  const {
+    method = "GET",
+    data = null,
+    customHeaders = {},
+    useAuthBaseUrl = false,
+    axiosConfig = {},
+    useAuth = false,
+    retry = 0,
+    delay = 3000,
+  } = options;
 
   const headers: Record<string, any> = {
     "Content-Type": "application/json",
@@ -118,8 +155,15 @@ export const apiRequest_axios = async <T>(url: string, options: FetcherOptions =
 
       attempts++;
 
-      const isNetworkError = !isAxiosError(lastError) || (isAxiosError(lastError) && (lastError.code === "ECONNABORTED" || lastError.code === "ERR_NETWORK"));
-      const isServerError = isAxiosError(lastError) && (lastError.response?.status as any) >= 500 && (lastError.response?.status as any) <= 599;
+      const isNetworkError =
+        !isAxiosError(lastError) ||
+        (isAxiosError(lastError) &&
+          (lastError.code === "ECONNABORTED" ||
+            lastError.code === "ERR_NETWORK"));
+      const isServerError =
+        isAxiosError(lastError) &&
+        (lastError.response?.status as any) >= 500 &&
+        (lastError.response?.status as any) <= 599;
 
       if (attempts > retry || (!isNetworkError && !isServerError)) {
         if (isAxiosError(lastError) && lastError.response) {
@@ -130,7 +174,9 @@ export const apiRequest_axios = async <T>(url: string, options: FetcherOptions =
         throw lastError;
       }
 
-      console.warn(`Retrying ${url} (${retry - attempts + 1} attempts left): ${lastError.message}`);
+      console.warn(
+        `Retrying ${url} (${retry - attempts + 1} attempts left): ${lastError.message}`,
+      );
       await sleep(delay * Math.pow(2, attempts - 1));
     }
   }

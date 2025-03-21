@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 
 import { NavType, NAV } from "@/contants/nav";
-import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 export default function HeaderNav() {

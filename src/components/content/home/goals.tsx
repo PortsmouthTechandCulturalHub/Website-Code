@@ -1,8 +1,12 @@
-import { Goal } from "@/app/variables";
-import SectionTitle from "@/components/common/sectionTitle";
 import { Play } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+
+
+import { Goal } from "@/app/variables";
+import SectionTitle from "@/components/common/sectionTitle";
+
+
 
 interface Props {
   goal: Goal;

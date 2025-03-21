@@ -1,9 +1,11 @@
-import { SOCIALS } from "@/contants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+
 import FooterNav from "@/components/footer/footer-nav";
 import Subscribe from "@/components/footer/subscribe";
+import { SOCIALS } from "@/contants";
+
 
 export default function Footer() {
   return (

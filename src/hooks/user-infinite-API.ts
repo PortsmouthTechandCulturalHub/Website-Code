@@ -1,10 +1,15 @@
-import { SWRInfiniteConfiguration, SWRInfiniteKeyLoader } from "swr/infinite";
-import useSWRInfinite from "swr/infinite";
-import { apiRequest } from "@/lib/api";
 import { useCallback } from "react";
 import { Key } from "swr";
+import useSWRInfinite, {
+  SWRInfiniteConfiguration,
+  SWRInfiniteKeyLoader,
+} from "swr/infinite";
 
-interface UseInfiniteAPIOptions extends FetcherOptions, Omit<SWRInfiniteConfiguration, "fetcher"> {
+import { apiRequest } from "@/lib/api";
+
+interface UseInfiniteAPIOptions
+  extends FetcherOptions,
+    Omit<SWRInfiniteConfiguration, "fetcher"> {
   limit?: number | undefined;
   paginationType?: "cursor" | "page";
   customFetcher?: (url: string, options: FetcherOptions) => Promise<any>;
@@ -32,12 +37,29 @@ interface PagePaginatedResponse<T> extends BaseResponse<T> {
 }
 
 // Type guard to check response type
-function isCursorResponse<T>(response: CursorPaginatedResponse<T> | PagePaginatedResponse<T>, paginationType: "cursor" | "page"): response is CursorPaginatedResponse<T> {
+function isCursorResponse<T>(
+  response: CursorPaginatedResponse<T> | PagePaginatedResponse<T>,
+  paginationType: "cursor" | "page",
+): response is CursorPaginatedResponse<T> {
   return paginationType === "cursor";
 }
 
-export function useInfiniteAPI<T>(endpoint: Key, options: UseInfiniteAPIOptions = {}) {
-  const { limit = undefined, method, data, customHeaders, useAuthBaseUrl, fetchOptions, useAuth, paginationType = "page", customFetcher, ...swrOptions } = options;
+export function useInfiniteAPI<T>(
+  endpoint: Key,
+  options: UseInfiniteAPIOptions = {},
+) {
+  const {
+    limit = undefined,
+    method,
+    data,
+    customHeaders,
+    useAuthBaseUrl,
+    fetchOptions,
+    useAuth,
+    paginationType = "page",
+    customFetcher,
+    ...swrOptions
+  } = options;
 
   const getKey: SWRInfiniteKeyLoader = (pageIndex, previousPageData) => {
     if (pageIndex === 0) {
@@ -75,15 +97,22 @@ export function useInfiniteAPI<T>(endpoint: Key, options: UseInfiniteAPIOptions 
     isLoading,
     isValidating,
     mutate,
-  } = useSWRInfinite<CursorPaginatedResponse<T> | PagePaginatedResponse<T>>(getKey, (url) => (customFetcher || apiRequest)(url, fetcherOptions), {
-    revalidateFirstPage: true,
-    revalidateOnFocus: true,
-    revalidateOnReconnect: true,
-    ...swrOptions,
-  });
+  } = useSWRInfinite<CursorPaginatedResponse<T> | PagePaginatedResponse<T>>(
+    getKey,
+    (url) => (customFetcher || apiRequest)(url, fetcherOptions),
+    {
+      revalidateFirstPage: true,
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true,
+      ...swrOptions,
+    },
+  );
 
-  const items = pages ? pages.flatMap((page) => page?.data || page?.stories || []) : [];
-  const isEmpty = pages?.[0]?.data?.length === 0 || pages?.[0]?.stories?.length === 0;
+  const items = pages
+    ? pages.flatMap((page) => page?.data || page?.stories || [])
+    : [];
+  const isEmpty =
+    pages?.[0]?.data?.length === 0 || pages?.[0]?.stories?.length === 0;
 
   const isReachingEnd =
     isEmpty ||
@@ -93,14 +122,22 @@ export function useInfiniteAPI<T>(endpoint: Key, options: UseInfiniteAPIOptions 
         if (paginationType === "cursor") {
           return !(lastPage as CursorPaginatedResponse<T>)?.nextCursor;
         } else {
-          return (lastPage as PagePaginatedResponse<T>)?.current_page >= (lastPage as PagePaginatedResponse<T>)?.last_page;
+          return (
+            (lastPage as PagePaginatedResponse<T>)?.current_page >=
+            (lastPage as PagePaginatedResponse<T>)?.last_page
+          );
         }
       })());
 
-  const isLoadingMore = isLoading || (size > 0 && pages && typeof pages[size - 1] === "undefined");
+  const isLoadingMore =
+    isLoading || (size > 0 && pages && typeof pages[size - 1] === "undefined");
   const total = pages?.[0]?.total ?? 0;
 
-  const currentPage = paginationType === "page" ? (pages?.[pages?.length - 1] as PagePaginatedResponse<T>)?.current_page ?? 1 : size;
+  const currentPage =
+    paginationType === "page"
+      ? ((pages?.[pages?.length - 1] as PagePaginatedResponse<T>)
+          ?.current_page ?? 1)
+      : size;
 
   const addItem = (newItem: T) => {
     mutate((pages) => {
@@ -119,7 +156,10 @@ export function useInfiniteAPI<T>(endpoint: Key, options: UseInfiniteAPIOptions 
   const revalidateFirstPage = async () => {
     try {
       const firstPageUrl = getKey(0, null);
-      const newFirstPage = await (customFetcher || apiRequest)(firstPageUrl as string, fetcherOptions);
+      const newFirstPage = await (customFetcher || apiRequest)(
+        firstPageUrl as string,
+        fetcherOptions,
+      );
 
       mutate((currentPages) => {
         if (!currentPages) return currentPages;
@@ -137,7 +177,9 @@ export function useInfiniteAPI<T>(endpoint: Key, options: UseInfiniteAPIOptions 
         const arrayKey = "data" in page ? "data" : "stories";
         return {
           ...page,
-          [arrayKey]: (page?.[arrayKey] || []).filter((item) => item[identifierKey] !== itemToRemove[identifierKey]),
+          [arrayKey]: (page?.[arrayKey] || []).filter(
+            (item) => item[identifierKey] !== itemToRemove[identifierKey],
+          ),
           total: page?.total - 1,
         };
       });
@@ -168,15 +210,22 @@ export function useInfiniteAPI<T>(endpoint: Key, options: UseInfiniteAPIOptions 
     loadMore,
     ...(paginationType === "cursor" &&
       pages?.[pages.length - 1] && {
-        nextCursor: (pages[pages.length - 1] as CursorPaginatedResponse<T>)?.nextCursor,
+        nextCursor: (pages[pages.length - 1] as CursorPaginatedResponse<T>)
+          ?.nextCursor,
       }),
     ...(paginationType === "page" &&
       pages?.[pages.length - 1] && {
-        hasNextPage: (pages[pages.length - 1] as PagePaginatedResponse<T>)?.current_page < (pages[pages.length - 1] as PagePaginatedResponse<T>)?.last_page,
-        lastPage: (pages[pages.length - 1] as PagePaginatedResponse<T>)?.last_page,
-        nextPageUrl: (pages[pages.length - 1] as PagePaginatedResponse<T>)?.next_page_url,
-        prevPageUrl: (pages[pages.length - 1] as PagePaginatedResponse<T>)?.prev_page_url,
-        perPage: (pages[pages.length - 1] as PagePaginatedResponse<T>)?.per_page,
+        hasNextPage:
+          (pages[pages.length - 1] as PagePaginatedResponse<T>)?.current_page <
+          (pages[pages.length - 1] as PagePaginatedResponse<T>)?.last_page,
+        lastPage: (pages[pages.length - 1] as PagePaginatedResponse<T>)
+          ?.last_page,
+        nextPageUrl: (pages[pages.length - 1] as PagePaginatedResponse<T>)
+          ?.next_page_url,
+        prevPageUrl: (pages[pages.length - 1] as PagePaginatedResponse<T>)
+          ?.prev_page_url,
+        perPage: (pages[pages.length - 1] as PagePaginatedResponse<T>)
+          ?.per_page,
       }),
   };
 }

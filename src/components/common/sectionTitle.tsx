@@ -1,7 +1,8 @@
+import { cva, VariantProps } from "class-variance-authority";
 import React, { ReactNode } from "react";
 
+
 import { cn } from "@/lib/utils";
-import { cva, VariantProps } from "class-variance-authority";
 
 const sectionTitle = cva("border-l-3 border-primary px-2 capitalize", {
   variants: {

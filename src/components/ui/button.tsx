@@ -1,12 +1,11 @@
 "use client";
 
-import type { VariantProps } from "class-variance-authority";
-
-import { forwardRef } from "react";
 import { useButton, Ripple, Spinner } from "@heroui/react";
+import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
+import { forwardRef } from "react";
 
 import { cn } from "@/lib/utils";
-import { cva } from "class-variance-authority";
 
 const button = cva(
   "rounded-md font-medium capitalize w-fit text-md flex items-center justify-center outline-none transition-colors-opacity data-[pressed=true]:scale-[0.97] whitespace-nowrap overflow-hidden relative",
