@@ -1,3 +1,5 @@
+"use client";
+
 import { useInput } from "@heroui/react";
 import { X } from "lucide-react";
 import React, { forwardRef } from "react";
@@ -5,26 +7,41 @@ import React, { forwardRef } from "react";
 const styles = {
   label: "text-black/50 dark:text-white/90",
   input: [
-    "bg-transparent",
-    "text-black/90 dark:text-white/90",
-    "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+    "text-base font-medium placeholder:!font-normal",
+    "data-[has-end-content=true]:pr-2",
+    "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
   ],
   innerWrapper: "bg-transparent",
   inputWrapper: [
-    "shadow-xl",
-    "bg-default-200/50",
-    "dark:bg-default/60",
-    "backdrop-blur-xl",
-    "backdrop-saturate-200",
-    "hover:bg-default-200/70",
+    "!rounded-md h-fit",
     "focus-within:bg-default-200/50!",
-    "dark:hover:bg-default/70",
     "dark:focus-within:bg-default/60!",
     "cursor-text!",
   ],
 };
 
-interface MyInputProps {
+const varients = {
+  flat: {
+    input: [
+      "text-white text-base font-medium placeholder:!font-normal",
+      "placeholder:text-white/60",
+      "data-[has-end-content=true]:pr-2",
+      "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
+    ],
+    inputWrapper: [
+      "rounded-md",
+      "bg-white/20 data-[hover=true]:bg-white/20 group-data-[focus=true]:bg-white/20",
+      "cursor-text!",
+    ],
+  },
+
+  default: {
+    input: ["text-black", "placeholder:text-gray-700"],
+    inputWrapper: ["bg-transparent data-[hover=true]:bg-transparent"],
+  },
+};
+
+interface InputProps {
   label?: string;
   type?: string;
   placeholder?: string;
@@ -46,67 +63,64 @@ interface MyInputProps {
     description?: string;
     errorMessage?: string;
   };
-  validate?: (value: string) => boolean | string;
-  [key: string]: any;
+  varient?: keyof typeof varients;
+  validate?: (value: string) => any;
 }
 
-const Input = forwardRef<HTMLInputElement, MyInputProps>((props, ref) => {
-  const {
-    Component,
-    label,
-    domRef,
-    description,
-    isClearable,
-    startContent,
-    endContent,
-    shouldLabelBeOutside,
-    shouldLabelBeInside,
-    errorMessage,
-    getBaseProps,
-    getLabelProps,
-    getInputProps,
-    getInnerWrapperProps,
-    getInputWrapperProps,
-    getDescriptionProps,
-    getErrorMessageProps,
-    getClearButtonProps,
-  } = useInput({
-    ...props,
-    ref,
-    label: "Search",
-    type: "search",
-    placeholder: "Type to search...",
-    classNames: {
-      ...styles,
-    },
-  });
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ varient = "default", ...props }, ref) => {
+    const {
+      Component,
+      label,
+      domRef,
+      description,
+      isClearable,
+      startContent,
+      endContent,
+      shouldLabelBeOutside,
+      shouldLabelBeInside,
+      errorMessage,
+      getBaseProps,
+      getLabelProps,
+      getInputProps,
+      getInnerWrapperProps,
+      getInputWrapperProps,
+      getDescriptionProps,
+      getErrorMessageProps,
+      getClearButtonProps,
+    } = useInput({
+      ref,
+      classNames: {
+        ...styles,
+        ...varients[varient],
+      },
+      ...props,
+    });
 
-  const labelContent = <label {...getLabelProps()}>{label}</label>;
+    const labelContent = <label {...getLabelProps()}>{label}</label>;
 
-  const end = React.useMemo(() => {
-    if (isClearable) {
-      return <span {...getClearButtonProps()}>{endContent || <X />}</span>;
-    }
+    const end = React.useMemo(() => {
+      if (isClearable) {
+        return <span {...getClearButtonProps()}>{endContent || <X />}</span>;
+      }
+      return endContent;
+    }, [isClearable, getClearButtonProps, endContent]);
 
-    return endContent;
-  }, [isClearable, getClearButtonProps]);
+    const innerWrapper = React.useMemo(() => {
+      if (startContent || end) {
+        return (
+          <div {...getInnerWrapperProps()}>
+            {startContent}
+            <input {...getInputProps()} />
+            {end}
+          </div>
+        );
+      }
 
-  const innerWrapper = React.useMemo(() => {
-    if (startContent || end) {
-      return (
-        <div {...getInnerWrapperProps()}>
-          {startContent}
-          <input {...getInputProps()} />
-          {end}
-        </div>
-      );
-    }
+      return <input {...getInputProps()} />;
+    }, [startContent, end, getInputProps, getInnerWrapperProps]);
 
-    return <input {...getInputProps()} />;
-  }, [startContent, end, getInputProps, getInnerWrapperProps]);
-
-  return (
-    <div className="bg-linear-to-tr flex h-[300px] w-[340px] items-center justify-center rounded-2xl from-pink-500 to-yellow-500 px-8 text-white shadow-lg">
+    return (
       <Component {...getBaseProps()}>
         {shouldLabelBeOutside ? labelContent : null}
         <div
@@ -126,9 +140,9 @@ const Input = forwardRef<HTMLInputElement, MyInputProps>((props, ref) => {
         {description && <div {...getDescriptionProps()}>{description}</div>}
         {errorMessage && <div {...getErrorMessageProps()}>{errorMessage}</div>}
       </Component>
-    </div>
-  );
-});
+    );
+  },
+);
 
 Input.displayName = "Input";
 

@@ -1,6 +1,7 @@
-import { Input } from "@heroui/react";
 import { Send } from "lucide-react";
 import React from "react";
+
+import Input from "@/components/ui/input";
 
 
 export default function Subscribe() {
@@ -14,12 +15,7 @@ export default function Subscribe() {
         type="email"
         placeholder={`Your email address`}
         endContent={<Send size={18} className="text-white" />}
-        classNames={{
-          inputWrapper:
-            "!bg-white/20 !rounded-lg data-[hover=true]:bg-white/20",
-          input:
-            "!text-base overflow-hidden !font-medium placeholder:!font-normal placeholder:!text-white/60  !text-white [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
-        }}
+        varient='flat'
       />
     </div>
   );

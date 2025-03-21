@@ -11,7 +11,7 @@ export default function HeaderNav() {
   const pathname = usePathname();
 
   return (
-    <div className="flex sm:flex-row flex-col items-center gap-6">
+    <div className="flex lg:flex-row flex-col items-center gap-6">
       {NAV.map((item: NavType) => (
         <Link key={item.title} href={item.link} className="outline-none">
           <h1

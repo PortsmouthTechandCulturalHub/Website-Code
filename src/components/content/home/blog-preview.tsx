@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Blog } from "@/app/variables";
-import SectionTitle from "@/components/common/sectionTitle";
+import SectionTitle from "@/components/common/section-title";
 import Button from "@/components/ui/button";
 
 interface Props {
@@ -11,7 +11,7 @@ export default function BlogPreview({ blog }: Props) {
   return (
     <div className="flex w-full flex-col gap-8 px-pg py-7">
       <SectionTitle childern="Blogs" />
-      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
         {blog.map((item) => (
           <div
             key={item.id}

@@ -2,9 +2,16 @@ export type HeroTypes = {
   salu: string;
   title: string;
   desc: string;
+  image: Image;
 };
 
 export const hero: HeroTypes = {
+  image: {
+    width: 4096,
+    height: 3072,
+    src: "/images/home/home-hero.jpg",
+    alt: "Home",
+  },
   salu: "Welcome",
   title: "Portsmouth Tech & Cultural Hub",
   desc: "Empowering the next generation of farmers and agricultural leaders through innovative tech solutions, driving sustainable growth and prosperity.",
@@ -13,6 +20,7 @@ export const hero: HeroTypes = {
 export type Goal = {
   desc: string;
   goals: {
+    icon: Image;
     id: string | number;
     title: string;
     desc: string;
@@ -25,16 +33,34 @@ export const goal: Goal = {
   goals: [
     {
       id: 0,
+      icon: {
+        width: 24,
+        height: 24,
+        src: "/icons/health-increase.svg",
+        alt: "icon",
+      },
       title: "Increase Food Security",
       desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     },
     {
       id: 1,
+      icon: {
+        width: 24,
+        height: 24,
+        src: "/icons/health-increase.svg",
+        alt: "icon",
+      },
       title: "Increase Food Security",
       desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     },
     {
       id: 3,
+      icon: {
+        width: 24,
+        height: 24,
+        src: "/icons/health-increase.svg",
+        alt: "icon",
+      },
       title: "Increase Food Security",
       desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     },
@@ -44,12 +70,7 @@ export const goal: Goal = {
 
 export type Stat = {
   id: string | number;
-  image: {
-    width: number;
-    height: number;
-    alt: string;
-    src: string;
-  };
+  image: Image;
   title: string;
   desc: string;
 };
@@ -142,16 +163,6 @@ export const blog: Blog[] = [
   },
   {
     id: 5,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
-  },
-  {
-    id: 6,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
-  },
-  {
-    id: 7,
     title: "Lorem Ipsum",
     desc: "Lorem Ipsum has been the industry' standard dummy ",
   },
