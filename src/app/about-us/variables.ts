@@ -38,7 +38,7 @@ export const about: AboutTypes = {
         alt: "vision",
       },
       title: "Vision",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      desc: " To unite and empower diverse cultures and businesses within the technology sector and technology-enabled professions in Portsmouth, the Solent and south coast areas, the United Kingdom, and globally.",
     },
     {
       id: 1,
