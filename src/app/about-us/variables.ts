@@ -26,7 +26,7 @@ export const about: AboutTypes = {
   content: {
     title: "About us",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining",
+      "Portsmouth Tech and Cultural Hub was established following the inaugural portsmouth tech and cultural summit in 2024, originally powered by Pavolera. The decision to create an independent hub was driven by a commitment to better serve the diverse communities in Portsmouth, the solent and south coast region, the United Kingdom, and beyond. This initiative is dedicated to cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately enhancing the nation's digital skill set.",
   },
   qlt: [
     {
