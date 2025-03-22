@@ -26,7 +26,7 @@ export const about: AboutTypes = {
   content: {
     title: "About us",
     content:
-      "Portsmouth Tech and Cultural Hub was established following the inaugural portsmouth tech and cultural summit in 2024, originally powered by Pavolera. The decision to create an independent hub was driven by a commitment to better serve the diverse communities in Portsmouth, the solent and south coast region, the United Kingdom, and beyond. This initiative is dedicated to cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately enhancing the nation's digital skill set.",
+      "Portsmouth Tech and Cultural Hub was established following the inaugural portsmouth tech and cultural summit in 2024, originally powered by Pavolera. The decision to create an independent hub was driven by a commitment to better serve the diverse communities in Portsmouth, the solent and south coast region, the United Kingdom, and beyond. This initiative is dedicated to cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately enhancing the nation's digital skill set",
   },
   qlt: [
     {
@@ -49,7 +49,7 @@ export const about: AboutTypes = {
         alt: "values",
       },
       title: "Values",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      desc: "Patiently nurturing and pushing each other to be the best version of ourselves through mentoring and development of digital skills.",
     },
     {
       id: 2,
