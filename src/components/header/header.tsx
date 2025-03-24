@@ -7,12 +7,12 @@ import Button from "@/components/ui/button";
 
 export default function Header() {
   return (
-    <div className="fixed z-50 flex h-sm-header w-full items-center justify-between bg-white px-pg sm:h-header">
-      <Image src="/images/logo.png" width={147} height={51} alt="Portsmouth" />
-      <div className="max-md:hidden">
+    <div className="fixed z-50 flex h-sm-header w-full items-center border-b border-gray-200 justify-between bg-white px-pg sm:h-header">
+      <Image src="/images/logo.png" width={147} height={51} alt="Portsmouth" className="" />
+      <div className="max-lg:hidden">
         <HeaderNav />
       </div>
-      <div className="max-md:hidden">
+      <div className="max-lg:hidden">
         <Button children="Donate now" />
       </div>
 
