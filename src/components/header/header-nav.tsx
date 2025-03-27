@@ -8,7 +8,7 @@ import { NavType, NAV } from "@/contants/nav";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  close?: () => {};
+  close?: () => void;
 }
 
 export default function HeaderNav({ close }: Props) {
@@ -19,7 +19,7 @@ export default function HeaderNav({ close }: Props) {
       {NAV.map((item: NavType) => (
         <Link key={item.title} href={item.link} className="outline-none">
           <h1
-            onClick={close}
+            onClick={() => close?.()}
             className={cn(
               "text-nowrap text-base font-normal capitalize text-gray-800 transition-colors hover:text-secondary",
               pathname === item.link && "font-medium text-primary",
