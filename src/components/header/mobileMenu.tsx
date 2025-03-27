@@ -36,7 +36,7 @@ export default function MobileMenu() {
               />
             </Drawer.Header>
             <Drawer.Body className="gap-12">
-              <HeaderNav />
+              <HeaderNav close={onClose} />
               <Button children="Donate now" className="w-full" />
             </Drawer.Body>
           </>

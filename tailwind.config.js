@@ -47,11 +47,7 @@ module.exports = {
         "5/3": "5 / 3",
       },
       screens: {
-        "4kScreen": "2000px",
-        lgs: "1024px",
-        xs: "450px",
-        xxs: "340px",
-        xxxs: "320px",
+        "4kScreen": "2000px"
       },
     },
   },
