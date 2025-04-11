@@ -15,7 +15,7 @@ import HeaderNav from "./header-nav";
 export default function MobileMenu() {
   return (
     <Drawer.Root>
-      <Drawer.Trigger className="md:hidden -mr-2" varient="light" size="sm">
+      <Drawer.Trigger className="lg:hidden -mr-2" varient="light" size="sm">
         <Menu className="text-primary" />
       </Drawer.Trigger>
       <Drawer.Content>
@@ -36,7 +36,7 @@ export default function MobileMenu() {
               />
             </Drawer.Header>
             <Drawer.Body className="gap-12">
-              <HeaderNav />
+              <HeaderNav close={onClose} />
               <Button children="Donate now" className="w-full" />
             </Drawer.Body>
           </>

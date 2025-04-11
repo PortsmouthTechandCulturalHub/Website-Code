@@ -3,34 +3,37 @@
 import { useInput } from "@heroui/react";
 import { X } from "lucide-react";
 import React, { forwardRef } from "react";
-
-const styles = {
-  label: "text-black/50 dark:text-white/90",
-  input: [
-    "text-base font-medium placeholder:!font-normal",
-    "data-[has-end-content=true]:pr-2",
-    "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
-  ],
-  innerWrapper: "bg-transparent",
-  inputWrapper: [
-    "!rounded-md h-fit",
-    "focus-within:bg-default-200/50!",
-    "dark:focus-within:bg-default/60!",
-    "cursor-text!",
-  ],
-};
+import { FieldError } from "react-hook-form";
 
 const varients = {
   flat: {
     input: [
-      "text-white text-base font-medium placeholder:!font-normal",
+      "!text-white text-base font-medium placeholder:!font-normal",
       "placeholder:text-white/60",
       "data-[has-end-content=true]:pr-2",
       "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
     ],
+    errorMessage: "text-red-500 text-base",
     inputWrapper: [
-      "rounded-md",
-      "bg-white/20 data-[hover=true]:bg-white/20 group-data-[focus=true]:bg-white/20",
+      "rounded-md shadow-none h-12 ring-0",
+      "!bg-white/20 data-[hover=true]:bg-white/20 group-data-[focus=true]:bg-white/20",
+      "data-[focus=true]:!bg-white data-[focus=true]:bg-white! group-data-[focus=true]:border-primary group-data-[focus-visible=true]:ring-0 group-data-[invalid=true]:border-red-500 group-data-[invalid=true]:bg-white",
+      "cursor-text!",
+    ],
+  },
+
+  outline: {
+    input: [
+      "!text-black text-base font-medium placeholder:!font-normal",
+      "placeholder:text-gray-200",
+      "data-[has-end-content=true]:pr-2",
+      "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
+    ],
+    errorMessage: "text-red-500 text-base",
+    inputWrapper: [
+      "rounded-md shadow-none h-12 ring-0",
+      "!bg-white data-[hover=true]:bg-white border-1.5 border-gray-300",
+      "group-data-[focus=true]:bg-white group-data-[focus=true]:border-primary group-data-[focus-visible=true]:ring-0 group-data-[invalid=true]:border-red-500 group-data-[invalid=true]:!bg-white",
       "cursor-text!",
     ],
   },
@@ -48,9 +51,10 @@ interface InputProps {
   isClearable?: boolean;
   isRequired?: boolean;
   isDisabled?: boolean;
+  isInvalid?: boolean;
   isReadOnly?: boolean;
   description?: string;
-  errorMessage?: string;
+  errorMessage?: FieldError["message"];
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
   labelPlacement?: "inside" | "outside" | "outside-left";
@@ -91,7 +95,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     } = useInput({
       ref,
       classNames: {
-        ...styles,
         ...varients[varient],
       },
       ...props,

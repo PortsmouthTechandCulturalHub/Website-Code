@@ -23,7 +23,7 @@ const button = cva(
       },
       disabled: {
         false: null,
-        true: "",
+        true: "opacity-60",
       },
     },
 
@@ -35,7 +35,9 @@ const button = cva(
   },
 );
 
-export interface ButtonProps extends VariantProps<typeof button> {
+export interface ButtonProps
+  extends VariantProps<typeof button>,
+    React.ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   spinnerSize?: number | string;
   spinner?: React.ReactNode;
@@ -75,6 +77,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={domRef}
         {...getButtonProps()}
+        disabled={disabled}
         className={cn(button({ varient, size, disabled }), props.className)}
       >
         {startContent}
