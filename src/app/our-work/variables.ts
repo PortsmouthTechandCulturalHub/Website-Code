@@ -60,19 +60,5 @@ export const work: Work[] = [
     title: "Lorem Ipsum",
     desc: "Lorem Ipsum has been the industry' standard dummy ",
   },
-  {
-    id: 5,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
-  },
-  {
-    id: 6,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
-  },
-  {
-    id: 7,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
-  },
+  
 ];
