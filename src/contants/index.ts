@@ -10,7 +10,7 @@ type Social = {
 
 export const SOCIALS: Social[] = [
   {
-    link: "/",
+    link: "https://www.instagram.com/portsmouthtch/",
     image: {
       width: 18,
       height: 18,
@@ -19,21 +19,12 @@ export const SOCIALS: Social[] = [
     },
   },
   {
-    link: "/",
+    link: "https://www.linkedin.com/company/portsmouth-tech-and-cultural-hub",
     image: {
       width: 16,
-      height: 14,
-      alt: "x/twitter",
-      src: "/icons/socials/x.svg",
-    },
-  },
-  {
-    link: "/",
-    image: {
-      width: 18,
-      height: 13,
-      alt: "youtube",
-      src: "/icons/socials/youtube.svg",
+      height: 16,
+      alt: "linkedin",
+      src: "/icons/socials/linkedin.svg",
     },
   },
 ];

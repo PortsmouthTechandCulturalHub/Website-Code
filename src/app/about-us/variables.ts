@@ -6,7 +6,7 @@ export const hero: HeroTypes = {
     alt: "about us",
   },
   title: "About us",
-  desc: "PORTMOUNT TECH & CULTURAL HUB is redefining agriculture with tech",
+  desc: "PORTSMOUTH TECH & CULTURAL HUB: Cultivating Digital Talent Since 2024",
 };
 
 export type AboutTypes = {
@@ -18,7 +18,7 @@ export type AboutTypes = {
     id: string | number;
     icon: Image;
     title: string;
-    desc: string;
+    list: string[];
   }[];
 };
 
@@ -26,7 +26,7 @@ export const about: AboutTypes = {
   content: {
     title: "About us",
     content:
-      "Portsmouth Tech and Cultural Hub was established following the inaugural portsmouth tech and cultural summit in 2024, originally powered by Pavolera. The decision to create an independent hub was driven by a commitment to better serve the diverse communities in Portsmouth, the solent and south coast region, the United Kingdom, and beyond. This initiative is dedicated to cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately enhancing the nation's digital skill set",
+      "Portsmouth Tech and Cultural Hub was established following the first edition of Portsmouth tech and cultural summit in September 2024. This event and hub was originally operating under the umbrella of  Pavolera technolgy limited. The decision to create an independent hub was driven by a commitment to better serve the diverse communities in Portsmouth, the Solent and South Coast region, the United Kingdom, and beyond. This hub is dedicated to cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately developing and enhancing the nation's digital skill set.",
   },
   qlt: [
     {
@@ -38,7 +38,12 @@ export const about: AboutTypes = {
         alt: "vision",
       },
       title: "Vision",
-      desc: " To unite and empower diverse cultures and businesses within the technology sector and technology-enabled professions in Portsmouth, the Solent and south coast areas, the United Kingdom, and globally.",
+      list: [
+        "To unite and empower diverse cultures and businesses within the technology sector and technology-enabled professions in Portsmouth, the Solent and south coast areas, the United Kingdom, and globally.",
+        "To drive community and digital innovation by continuously supporting skill acquisition and development in digital and creative technologies in Portsmouth, the Solent and south coast areas, the United Kingdom, and worldwide",
+        "To foster a culture of collaboration and empowerment by providing digital inclusion opportunities for those who are digitally excluded.",
+        "To build and increase tech tourism in Portsmouth, United Kingdom and spotlight the city as the powerhouse of tech innovation in the world.",
+      ],
     },
     {
       id: 1,
@@ -49,19 +54,25 @@ export const about: AboutTypes = {
         alt: "values",
       },
       title: "Values",
-      desc: "Patiently nurturing and pushing each other to be the best version of ourselves through mentoring and development of digital skills.",
+      list: [
+        "Patiently nurturing and pushing each other to be the best version of ourselves through mentoring and development of digital skills.",
+        "Teaching and encouraging each other through every process of the way; it doesn’t matter your level of education, we are here to challenge, help and uplift each other into the next stage of our careers",
+        "Always trying new ideas and innovation, we may fail but we will rise again and conquer our fears and be the best version of ourselves until we meet and exceed our goals.",
+        "Cultivating the can-do spirit!!, tech can be sometimes boring and scary; we know right!!  but don’t worry at Portsmouth tech and cultural hub, it will be all vibe and fun all through the learning process.",
+        "Honesty, respect and values are our watchward, this helps us to grow and build lifelong skills beyond the field of technology",
+      ],
     },
-    {
-      id: 2,
-      icon: {
-        width: 71,
-        height: 72,
-        src: "/icons/history.svg",
-        alt: "History",
-      },
-      title: "History",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-    },
+    // {
+    //   id: 2,
+    //   icon: {
+    //     width: 71,
+    //     height: 72,
+    //     src: "/icons/history.svg",
+    //     alt: "History",
+    //   },
+    //   title: "History",
+    //   desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+    // },
   ],
 };
 

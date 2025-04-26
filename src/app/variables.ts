@@ -12,14 +12,14 @@ export const hero: HeroTypes = {
     src: "/images/home/home-hero.jpg",
     alt: "Home",
   },
-  salu: "Welcome to",
+  salu: "Welcome",
   title: "Portsmouth Tech & Cultural Hub",
-  desc: "Empowering the next generation of farmers and agricultural leaders through innovative tech solutions, driving sustainable growth and prosperity.",
+  desc: "Cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately developing and enhancing the nation's digital skill set.",
 };
 
-export type Goal = {
+export type Values = {
   desc: string;
-  goals: {
+  values: {
     icon: Image;
     id: string | number;
     title: string;
@@ -28,9 +28,9 @@ export type Goal = {
   videoThumbnail: string;
 };
 
-export const goal: Goal = {
-  desc: "Digital agriculture initiatives empowering underserved youth to cultivate innovation, develop valuable skills, and grow their potential, with a focus on communities impacted by socio-economic challenges.",
-  goals: [
+export const values: Values = {
+  desc: "Portsmouth Tech and Cultural Hub CIC is a not-for-profit organisation supporting access to technology, culture, and skills in Portsmouth and beyond. Registered in England and Wales",
+  values: [
     {
       id: 0,
       icon: {
@@ -39,8 +39,8 @@ export const goal: Goal = {
         src: "/icons/health-increase.svg",
         alt: "icon",
       },
-      title: "Increase Food Security",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      title: "Mentorship & Growth",
+      desc: "Patiently nurturing and pushing each other to be the best version of ourselves through mentoring and development of digital skills.",
     },
     {
       id: 1,
@@ -50,8 +50,19 @@ export const goal: Goal = {
         src: "/icons/health-increase.svg",
         alt: "icon",
       },
-      title: "Increase Food Security",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      title: "Inclusive Support",
+      desc: "Teaching and encouraging each other through every process of the way; it doesn’t matter your level of education, we are here to challenge, help and uplift each other into the next stage of our careers.",
+    },
+    {
+      id: 5,
+      icon: {
+        width: 24,
+        height: 24,
+        src: "/icons/health-increase.svg",
+        alt: "icon",
+      },
+      title: "Core Values: Honesty, Respect & Integrity",
+      desc: "Honesty, respect and values are our watchword. This helps us to grow and build lifelong skills beyond the field of technology.",
     },
     {
       id: 3,
@@ -61,8 +72,19 @@ export const goal: Goal = {
         src: "/icons/health-increase.svg",
         alt: "icon",
       },
-      title: "Increase Food Security",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      title: "Innovation & Resilience",
+      desc: "Always trying new ideas and innovation, we may fail but we will rise again and conquer our fears and be the best version of ourselves until we meet and exceed our goals.",
+    },
+    {
+      id: 4,
+      icon: {
+        width: 24,
+        height: 24,
+        src: "/icons/health-increase.svg",
+        alt: "icon",
+      },
+      title: "Fun & Positive Learning Environment",
+      desc: "Cultivating the can-do spirit!! Tech can be sometimes boring and scary—we know right?! But don’t worry, at Portsmouth Tech and Cultural Hub, it will be all vibe and fun all through the learning process.",
     },
   ],
   videoThumbnail: "/images/home/video-thumbnail.jpg",
@@ -168,26 +190,31 @@ export const blog: Blog[] = [
   },
 ];
 
-export type Testimonial = {
+export type Vision = {
   id: string | number;
   title: string;
   desc: string;
 };
 
-export const testimonial: Testimonial[] = [
+export const vision: Vision[] = [
   {
     id: 0,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummyLorem Ipsum has been the industry' standard dummy",
+    title: "Unity",
+    desc: "To unite and empower diverse cultures and businesses within the technology sector and technology-enabled professions in Portsmouth, the Solent and south coast areas, the United Kingdom, and globally",
   },
   {
     id: 1,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummyLorem Ipsum has been the industry' standard dummy",
+    title: "Innovation",
+    desc: "To drive community and digital innovation by continuously supporting skill acquisition and development in digital and creative technologies in Portsmouth, the Solent and south coast areas, the United Kingdom, and worldwide.",
   },
   {
     id: 2,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummyLorem Ipsum has been the industry' standard dummy",
+    title: "Inclusion",
+    desc: "To foster a culture of collaboration and empowerment by providing digital inclusion opportunities for those who are digitally excluded.",
+  },
+  {
+    id: 3,
+    title: "Spotlight",
+    desc: "To build and increase tech tourism in Portsmouth, United Kingdom, and spotlight the city as the powerhouse of tech innovation in the world.",
   },
 ];

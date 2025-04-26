@@ -6,7 +6,7 @@ export const hero: HeroTypes = {
     alt: "Our us",
   },
   title: "Our work",
-  desc: "Lorem Ipsum is simply dummy text of the printing and typesetting",
+  desc: "Empowering Portsmouth and beyond with digital skills, creative tech, and community innovation",
 };
 
 export type GetToKnow = {
@@ -17,7 +17,7 @@ export const getToKnow: GetToKnow = {
   content: {
     title: "Get to know Portmouth Tech & Culture Hub",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It has survived not only five centuries, but also the leap into electronic typesetting, remaining",
+      "Portsmouth Tech & Cultural Hub delivers inclusive, hands-on training in essential digital skills—from coding and cybersecurity to AI literacy—through workshops, bootcamps, and mentoring programs that boost confidence and career prospects. It harnesses creative technologies like AR, VR, and interactive media to merge Portsmouth’s rich cultural heritage with digital innovation, empowering artists, storytellers, and organizations to explore new forms of expression. Through hackathons, civic-tech projects, and collaborative problem-solving, the hub leverages technology as a force for good to tackle local challenges and support underrepresented communities. By uniting digital education, creative experimentation, and social-impact initiatives, the hub fosters a vibrant ecosystem that cultivates talent, drives equity, and nurtures innovation across the region.",
   },
 };
 
