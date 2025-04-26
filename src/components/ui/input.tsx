@@ -17,7 +17,7 @@ const varients = {
     inputWrapper: [
       "rounded-md shadow-none h-12 ring-0",
       "!bg-white/20 data-[hover=true]:bg-white/20 group-data-[focus=true]:bg-white/20",
-      "data-[focus=true]:!bg-white data-[focus=true]:bg-white! group-data-[focus=true]:border-primary group-data-[focus-visible=true]:ring-0 group-data-[invalid=true]:border-red-500 group-data-[invalid=true]:bg-white",
+      "data-[focus=true]:bg-white/20 data-[focus=true]:bg-white/20 group-data-[focus=true]:border-primary group-data-[focus-visible=true]:ring-0 group-data-[invalid=true]:border-red-500 group-data-[invalid=true]:bg-white",
       "cursor-text!",
     ],
   },
@@ -25,7 +25,7 @@ const varients = {
   outline: {
     input: [
       "!text-black text-base font-medium placeholder:!font-normal",
-      "placeholder:text-gray-200",
+      "placeholder:text-gray-500",
       "data-[has-end-content=true]:pr-2",
       "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
     ],

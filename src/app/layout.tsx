@@ -15,7 +15,26 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Portsmouth Tech & Cultural Hub",
   description:
-    "Empowering the next generation of farmers and agricultural leaders through innovative tech solutions, driving sustainable growth and prosperity.",
+    "Cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately developing and enhancing the nation's digital skill set.",
+  // metadataBase: new URL("https://akano.co"),
+  openGraph: {
+    title: "Portsmouth Tech & Cultural Hub",
+    images: {
+      url: "/images/preview.webp",
+      alt: "Portsmouth Tech & Cultural Hub",
+    },
+    description:
+      "Cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately developing and enhancing the nation's digital skill set.",
+  },
+  twitter: {
+    title: "Portsmouth Tech & Cultural Hub",
+    images: {
+      url: "/images/preview.webp",
+      alt: "Portsmouth Tech & Cultural Hub",
+    },
+    description:
+      "Cultivating tech talent through comprehensive training, mentorship, workshops, conferences, and research, ultimately developing and enhancing the nation's digital skill set.",
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +47,7 @@ export default function RootLayout({
       <body className={`${inter.variable} relative antialiased`}>
         <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ export default function Footer() {
     <div className="w-full flex lg:flex-row flex-col-reverse gap-14 bg-primary px-pg py-16">
       <div className="flex flex-1 flex-col justify-center max-lg:items-center lg:gap-14 gap-7">
         <h1 className="text-sm max-lg:text-center font-medium text-white">
-          Copyright &copy; 2020 Portsmouth Tech & Cultural Hub Itd. <br /> All
+          Copyright &copy; 2025 Portsmouth Tech & Cultural Hub Itd. <br /> All
           rights reserved
         </h1>
         <div className="flex gap-6">

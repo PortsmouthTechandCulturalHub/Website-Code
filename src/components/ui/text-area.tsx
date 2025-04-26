@@ -22,7 +22,7 @@ const varients = {
   bordered: {
     input: [
       "!text-black text-base font-medium placeholder:!font-normal",
-      "placeholder:text-gray-200",
+      "placeholder:text-gray-500",
       "data-[has-end-content=true]:pr-2",
       "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
     ],

@@ -4,6 +4,11 @@ import { contacts } from "@/app/contact-us/variables";
 import ContactCard from "@/components/content/contact-us/contact-card";
 import ContactForm from "@/components/content/contact-us/contact-form";
 
+export const metadata = {
+  title: "Contact us",
+  description: "If you have any questions or concerns reach out to us",
+};
+
 export default function ContactUs() {
   return (
     <div className="flex w-full flex-col gap-9 px-pg pb-14 pt-sm-header sm:px-[15%] sm:pt-header">
