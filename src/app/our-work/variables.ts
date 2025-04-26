@@ -37,18 +37,18 @@ export type Work = {
 export const work: Work[] = [
   {
     id: 0,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
+    title: "Digital Skills & Workforce Empowerment",
+    desc: "Building Tech Confidence, One Workshop at a Time We believe everyone deserves access to the tools and knowledge that shape the future.",
   },
   {
     id: 1,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
+    title: "Creative Technology & Cultural Innovation",
+    desc: "Merging Creativity with Code to Tell New Stories Portsmouth is rich in culture—and we’re bringing it into the digital age.",
   },
   {
     id: 2,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
+    title: "Tech for Good & Community Innovation",
+    desc: "Technology that Works for People and the Plane At the heart of everything we do is a commitment to social impact.",
   },
   {
     id: 3,
@@ -60,19 +60,5 @@ export const work: Work[] = [
     title: "Lorem Ipsum",
     desc: "Lorem Ipsum has been the industry' standard dummy ",
   },
-  {
-    id: 5,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
-  },
-  {
-    id: 6,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
-  },
-  {
-    id: 7,
-    title: "Lorem Ipsum",
-    desc: "Lorem Ipsum has been the industry' standard dummy ",
-  },
+  
 ];

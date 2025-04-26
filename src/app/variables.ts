@@ -106,8 +106,8 @@ export const stat: Stat[] = [
       height: 85,
       alt: "group-fill",
     },
-    title: "11885+",
-    desc: " Lorem Ipsum has been the industry' standard dummy",
+    title: "1885+",
+    desc: "Our programs have equipped over 1885 individuals with valuable skills and knowledge, enabling them to build more sustainable livelihoods.",
   },
   {
     id: 1,
@@ -118,7 +118,7 @@ export const stat: Stat[] = [
       alt: "24-hour-fill",
     },
     title: "2067+",
-    desc: " Lorem Ipsum has been the industry' standard dummy",
+    desc: "We've fostered long-term relationships with over 2067 community members who have benefited from our sustained support and engagement over the years.",
   },
   {
     id: 2,
@@ -129,7 +129,7 @@ export const stat: Stat[] = [
       alt: "basketball-fill",
     },
     title: "507+",
-    desc: " Lorem Ipsum has been the industry' standard dummy",
+    desc: "Through our various programs, we directly impact the lives of over 507 community members annually, providing vital resources and opportunities for growth.",
   },
   {
     id: 3,
@@ -140,7 +140,7 @@ export const stat: Stat[] = [
       alt: "person-fill",
     },
     title: "186+",
-    desc: " Lorem Ipsum has been the industry' standard dummy",
+    desc: "We are grateful for the support of our partners who believe in our mission and help us make a tangible difference in the lives of those we serve.",
   },
 ];
 
