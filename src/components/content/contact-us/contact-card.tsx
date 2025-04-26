@@ -19,14 +19,6 @@ export default function ContactCard({ contact }: Props) {
 
       <div className="flex flex-col gap-2">
         <div className="flex items-start gap-2">
-          <MapPin size={24} className="fill-black text-white" />
-          <p className="text-xl text-black">{contact.location}</p>
-        </div>
-        <div className="flex items-start gap-2">
-          <Phone size={24} className="fill-black text-white" />
-          <p className="text-xl text-black">{contact.phone}</p>
-        </div>
-        <div className="flex items-start gap-2">
           <Mail size={24} className="fill-black text-white" />
           <p className="text-xl text-black">{contact.mail}</p>
         </div>
