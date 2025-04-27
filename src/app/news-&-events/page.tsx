@@ -1,18 +1,19 @@
 import React from "react";
 
 import Content from "@/components/content/news-&-events/content";
-
-import { news } from "./variable";
+import { getNewsAndEvents } from "@/contentful/request/get-news-and-events";
 
 export const metadata = {
   title: "News and Events",
   description: "PORTSMOUTH TECH & CULTURAL HUB news and events",
 };
 
-export default function NewsAndEvents() {
+export default async function NewsAndEvents() {
+  const { newsAndEvents } = await getNewsAndEvents();
+
   return (
     <div className="flex w-full flex-col pt-sm-header sm:pt-header">
-      <Content news={news} />
+      <Content news={newsAndEvents} />
     </div>
   );
 }

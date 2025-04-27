@@ -1,5 +1,25 @@
 interface FetcherOptions {
-  method?: "get" | "GET" | "delete" | "DELETE" | "head" | "HEAD" | "options" | "OPTIONS" | "post" | "POST" | "put" | "PUT" | "patch" | "PATCH" | "purge" | "PURGE" | "link" | "LINK" | "unlink" | "UNLINK";
+  method?:
+    | "get"
+    | "GET"
+    | "delete"
+    | "DELETE"
+    | "head"
+    | "HEAD"
+    | "options"
+    | "OPTIONS"
+    | "post"
+    | "POST"
+    | "put"
+    | "PUT"
+    | "patch"
+    | "PATCH"
+    | "purge"
+    | "PURGE"
+    | "link"
+    | "LINK"
+    | "unlink"
+    | "UNLINK";
   data?: any;
   customHeaders?: HeadersInit;
   useAuthBaseUrl?: boolean;
@@ -9,3 +29,8 @@ interface FetcherOptions {
   delay?: number;
   axiosConfig?: any;
 }
+
+type AuthError = {
+  code?: string | null;
+  message: string;
+};
