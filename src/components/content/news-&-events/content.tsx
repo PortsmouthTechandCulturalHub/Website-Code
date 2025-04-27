@@ -3,6 +3,7 @@ import { Calendar } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
+import EmptyContent from "@/components/common/empty-content";
 import Button from "@/components/ui/button";
 // import Pagination from "@/components/ui/pagination";
 
@@ -12,7 +13,7 @@ interface Props {
 export default function Content({ news }: Props) {
   return (
     <>
-      {news.length > 0 && (
+      {news.length > 0 ? (
         <div className="flex w-full flex-col gap-14 px-pg py-14">
           <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 4kScreen:grid-cols-3">
             {news.map((item) => (
@@ -57,6 +58,8 @@ export default function Content({ news }: Props) {
         <Pagination />
       </div> */}
         </div>
+      ) : (
+        <EmptyContent text="No news or upcoming events" />
       )}
     </>
   );

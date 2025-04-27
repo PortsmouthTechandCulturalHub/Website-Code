@@ -12,7 +12,7 @@ export default async function NewsAndEvents() {
   const { newsAndEvents } = await getNewsAndEvents();
 
   return (
-    <div className="flex w-full flex-col pt-sm-header sm:pt-header">
+    <div className="flex w-full relative flex-col pt-sm-header min-h-[60dvh] sm:pt-header">
       <Content news={newsAndEvents} />
     </div>
   );
