@@ -1,7 +1,7 @@
 type HeroTypes = {
   image: Image;
-  title: string;
-  desc: string;
+  title?: string;
+  desc?: string;
 };
 
 type Image = {

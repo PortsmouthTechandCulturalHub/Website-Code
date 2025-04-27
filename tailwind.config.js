@@ -49,6 +49,7 @@ module.exports = {
       screens: {
         "4kScreen": "2000px"
       },
+      
     },
   },
   darkMode: "class",
