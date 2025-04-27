@@ -19,7 +19,7 @@ export default function ContactCard({ contact }: Props) {
 
       <div className="flex flex-col gap-2">
         <div className="flex items-start gap-2">
-          <Mail size={24} className="fill-black text-white" />
+          <Mail size={24} className="fill-black mt-1 text-white" />
           <p className="text-xl text-black">{contact.mail}</p>
         </div>
       </div>

@@ -1,17 +1,14 @@
 "use client";
 
 import React from "react";
-import { Controller } from "react-hook-form";
 
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
-import Textarea from "@/components/ui/text-area";
 import useReactHookForm from "@/hooks/use-hooks-form";
 import { volunteerSchema } from "@/validations/volunteer";
 
 export default function VolunteerForm() {
   const {
-    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
