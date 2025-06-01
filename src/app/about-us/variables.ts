@@ -86,32 +86,32 @@ export type Teams = {
 export const teams: Teams = [
   {
     id: 0,
-    name: "Godswill Ikpeamah",
+    name: "Anuoluwapo Gabriel",
     pos: "CEO & Founder",
   },
   {
     id: 1,
-    name: "James John",
-    pos: "Programmer",
+    name: "Olufemi Olaiya",
+    pos: "Director",
   },
   {
     id: 2,
-    name: "Ngozi Favour",
-    pos: "Programme Manager",
+    name: "Gabriel .I. Anyim",
+    pos: "Director",
   },
   {
     id: 3,
-    name: "James John",
-    pos: "Programmer",
+    name: "Godwin Nse Ebong",
+    pos: "Learning and Development ",
   },
   {
     id: 4,
-    name: "James John",
-    pos: "Programmer",
+    name: "Ridwan Olajide",
+    pos: "Social Media",
   },
   {
     id: 5,
-    name: "James John",
-    pos: "Programmer",
+    name: "Nadine E.",
+    pos: "Compliance",
   },
 ];
