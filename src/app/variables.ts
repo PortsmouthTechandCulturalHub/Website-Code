@@ -128,8 +128,8 @@ export const stat: Stat[] = [
       height: 85,
       alt: "basketball-fill",
     },
-    title: "507+",
-    desc: "Through our various programs, we directly impact the lives of over 507 community members annually, providing vital resources and opportunities for growth.",
+    title: "1000+",
+    desc: "Through our various programs, we directly impact the lives of over 1000 community members annually, providing vital resources and opportunities for growth.",
   },
   {
     id: 3,
@@ -139,7 +139,7 @@ export const stat: Stat[] = [
       height: 85,
       alt: "person-fill",
     },
-    title: "186+",
+    title: "50+",
     desc: "We are grateful for the support of our partners who believe in our mission and help us make a tangible difference in the lives of those we serve.",
   },
 ];
