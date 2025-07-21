@@ -117,8 +117,9 @@ export const stat: Stat[] = [
       height: 85,
       alt: "24-hour-fill",
     },
-    title: "2067+",
-    desc: "We've fostered long-term relationships with over 2067 community members who have benefited from our sustained support and engagement over the years.",
+    title: "2500+",
+    desc: "We have fostered long term relationships with over 2500 community members who have benefited from our sustained support and engagements over the last 2 years.",
+    buttonLabel: "Read More",
   },
   {
     id: 2,
