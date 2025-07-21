@@ -29,7 +29,7 @@ export type Values = {
 };
 
 export const values: Values = {
-  desc: "Portsmouth Tech and Cultural Hub CIC is a not-for-profit organisation supporting access to technology, culture, and skills in Portsmouth and beyond. Registered in England and Wales",
+  desc: "Portsmouth Tech and Cultural Hub CIC is a not-for-profit organisation with registeration number 16408734 which supports access to digital and creative technology, digital skills acquistion and mentorship in Portsmouth and beyond. Registered in England and Wales",
   values: [
     {
       id: 0,
