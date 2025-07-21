@@ -106,8 +106,8 @@ export const stat: Stat[] = [
       height: 85,
       alt: "group-fill",
     },
-    title: "1885+",
-    desc: "Our programs have equipped over 1885 individuals with valuable skills and knowledge, enabling them to build more sustainable livelihoods.",
+    title: "1500+",
+    desc: "Our programs have equipped over 1500 individuals with valuable skills and knowledge, enabling them to build more sustainable livelihoods.",
   },
   {
     id: 1,
