@@ -39,7 +39,7 @@ export const about: AboutTypes = {
       },
       title: "Vision",
       list: [
-        "To unite and empower diverse cultures and businesses within the technology sector and technology-enabled professions in Portsmouth, the Solent and south coast areas, the United Kingdom, and globally.",
+        "To unite and empower young people from diverse cultures through the acquisition of digital skills and access to mentorship within the digital and creative technology sectors in Portsmouth, the Solent and south coast areas, the United Kingdom, and globally.",
         "To drive community and digital innovation by continuously supporting skill acquisition and development in digital and creative technologies in Portsmouth, the Solent and south coast areas, the United Kingdom, and worldwide",
         "To foster a culture of collaboration and empowerment by providing digital inclusion opportunities for those who are digitally excluded.",
         "To build and increase tech tourism in Portsmouth, United Kingdom and spotlight the city as the powerhouse of tech innovation in the world.",
