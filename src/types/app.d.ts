@@ -1,13 +1,11 @@
-// src/types/app.d.ts
-
-export type Image = {
+type Image = {
   src: string;
   width: number;
   height: number;
   alt: string;
 };
 
-export type Blog = {
+type Blog = {
   sys: {
     id: string;
   };
@@ -18,7 +16,7 @@ export type Blog = {
   coverImage: Image;
 };
 
-export type NewsAndEvent = {
+type NewsAndEvent = {
   sys: {
     id: string;
   };
