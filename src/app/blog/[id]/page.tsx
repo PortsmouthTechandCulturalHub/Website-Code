@@ -1,13 +1,14 @@
 /* eslint-disable import/order */
-import Image from "next/image";
+
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { contentfulClient } from "@/lib/contentful";
 
-export default async function BlogPage({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}) {
+}
+
+export default async function BlogPage({ params }: PageProps) {
   try {
     const entry = await contentfulClient.getEntry(params.id);
 
@@ -37,12 +38,10 @@ export default async function BlogPage({
               className="size-full object-cover sm:object-[0%_20%]"
             />
           </div>
-
           <h1 className="mt-6 text-2xl font-bold text-black">{blog.title}</h1>
           <p className="text-sm text-gray-500">
             {new Date(blog.publishDate).toLocaleDateString()}
           </p>
-
           <div className="mt-4 text-base text-gray-800 whitespace-pre-line">
             {blog.content}
           </div>
@@ -53,3 +52,4 @@ export default async function BlogPage({
     return notFound();
   }
 }
+
