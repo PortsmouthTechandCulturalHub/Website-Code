@@ -9,13 +9,6 @@ import React from "react";
 // Adjust this path if your Contentful utility file is located elsewhere
 import { getBlogPost } from "@/lib/contentful";
 
-// Define the props interface for this page component
-interface BlogPostPageProps {
-  params: {
-    id: string; // The dynamic part of the URL, e.g., 'your-blog-post-id'
-  };
-}
-
 // Rich Text rendering options for Contentful's Rich Text field
 // This constant must be defined before it's used in the component below.
 const richTextOptions = {
@@ -119,7 +112,11 @@ const richTextOptions = {
 };
 
 // Main page component for displaying a single blog post
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage({
+  params, // Destructure params directly from the props object
+}: {
+  params: { id: string }; // Define the type for 'params' inline here
+}) {
   const { id } = params; // Extract the blog post ID from the URL parameters
   const blogPost = await getBlogPost(id); // Fetch the blog post data from Contentful
 
@@ -146,7 +143,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     content: any; // Contentful Rich Text field's data (JSON object)
   };
 
-  // --- Crucial check for rich text content ---
+  // --- Crucial check for rich text content to prevent 'map of undefined' error ---
   // If 'content' field is undefined or empty, display a fallback message instead of crashing
   if (!fields.content || Object.keys(fields.content).length === 0 || !fields.content.content) {
     return (
