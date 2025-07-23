@@ -1,110 +1,24 @@
 // src/app/blog/[id]/page.tsx
 
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+// Removed imports for Contentful Rich Text renderer as content is a plain string
+// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+// import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 
 import { getBlogPost } from "@/lib/contentful";
 
-const richTextOptions = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
-      const { target } = node.data;
-      const file = target?.fields?.file;
-      const title = target?.fields?.title;
+// richTextOptions is no longer needed as content is a plain string
+// const richTextOptions = {
+//   renderNode: {
+//     [BLOCKS.EMBEDDED_ASSET]: (node: any) => { /* ... */ },
+//     // ... other renderNode and renderMark properties
+//   },
+//   renderMark: { /* ... */ },
+// };
 
-      // Safely access image details and check if width/height are valid
-      if (file?.url && file?.details?.image) {
-        const imageUrl = `https:${file.url}`;
-        const { width, height } = file.details.image;
-
-        // Ensure width and height are positive numbers before passing to next/image
-        if (typeof width === 'number' && typeof height === 'number' && width > 0 && height > 0) {
-          return (
-            <figure className="my-6">
-              <Image
-                src={imageUrl}
-                alt={title || "Embedded Asset"}
-                width={width}
-                height={height}
-                className="rounded-lg object-cover w-full h-auto"
-                sizes="(max-width: 768px) 100vw, 700px"
-              />
-              {title && (
-                <figcaption className="text-center text-sm text-gray-500 mt-2">
-                  {title}
-                </figcaption>
-              )}
-            </figure>
-          );
-        } else {
-          // Log a warning if dimensions are invalid, and return null or a fallback div
-          console.warn(`Contentful Embedded Asset: Invalid dimensions for "${title || 'Untitled Asset'}". URL: ${imageUrl}, Width: ${width}, Height: ${height}`);
-          return (
-            <div className="text-red-500 bg-red-100 p-2 rounded">
-              <p>Image failed to load for "{title || 'Embedded Asset'}" (invalid dimensions).</p>
-            </div>
-          );
-        }
-      }
-      return null; // Return null if file or image details are missing
-    },
-    [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => {
-      const { uri } = node.data;
-      return (
-        <a href={uri} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-          {children}
-        </a>
-      );
-    },
-    [BLOCKS.PARAGRAPH]: (_: any, children: React.ReactNode) => (
-      <p className="mb-4 text-gray-800 leading-relaxed">{children}</p>
-    ),
-    [BLOCKS.HEADING_1]: (_: any, children: React.ReactNode) => (
-      <h1 className="text-4xl font-extrabold mb-6 mt-8 text-gray-900">{children}</h1>
-    ),
-    [BLOCKS.HEADING_2]: (_: any, children: React.ReactNode) => (
-      <h2 className="text-3xl font-bold mb-5 mt-7 text-gray-800">{children}</h2>
-    ),
-    [BLOCKS.HEADING_3]: (_: any, children: React.ReactNode) => (
-      <h3 className="text-2xl font-semibold mb-4 mt-6 text-gray-700">{children}</h3>
-    ),
-    [BLOCKS.HEADING_4]: (_: any, children: React.ReactNode) => (
-      <h4 className="text-xl font-semibold mb-3 mt-5 text-gray-700">{children}</h4>
-    ),
-    [BLOCKS.HEADING_5]: (_: any, children: React.ReactNode) => (
-      <h5 className="text-lg font-semibold mb-2 mt-4 text-gray-700">{children}</h5>
-    ),
-    [BLOCKS.HEADING_6]: (_: any, children: React.ReactNode) => (
-      <h6 className="text-base font-semibold mb-1 mt-3 text-gray-700">{children}</h6>
-    ),
-    [BLOCKS.UL_LIST]: (_: any, children: React.ReactNode) => (
-      <ul className="list-disc ml-6 mb-4 text-gray-800">{children}</ul>
-    ),
-    [BLOCKS.OL_LIST]: (_: any, children: React.ReactNode) => (
-      <ol className="list-decimal ml-6 mb-4 text-gray-800">{children}</ol>
-    ),
-    [BLOCKS.LIST_ITEM]: (_: any, children: React.ReactNode) => (
-      <li className="mb-2">{children}</li>
-    ),
-    [BLOCKS.QUOTE]: (_: any, children: React.ReactNode) => (
-      <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
-        {children}
-      </blockquote>
-    ),
-    [BLOCKS.HR]: () => <hr className="my-8 border-gray-200" />,
-  },
-  renderMark: {
-    bold: (children: React.ReactNode) => <strong>{children}</strong>,
-    italic: (children: React.ReactNode) => <em>{children}</em>,
-    underline: (children: React.ReactNode) => <u>{children}</u>,
-    code: (children: React.ReactNode) => (
-      <code className="bg-gray-100 p-1 rounded text-sm font-mono">{children}</code>
-    ),
-  },
-};
 
 // Use `any` to avoid Vercel's type conflict at build (as a temporary workaround)
 export default async function BlogPostPage({ params }: any) {
@@ -125,7 +39,7 @@ export default async function BlogPostPage({ params }: any) {
         title: string;
       };
     };
-    content: any; // Contentful Rich Text field's data (JSON object)
+    content: string; // <-- Type changed to string based on your feedback
   };
 
   return (
@@ -145,14 +59,14 @@ export default async function BlogPostPage({ params }: any) {
       <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{fields.title}</h1>
       <p className="text-xl text-gray-600 mb-8">{fields.description}</p>
 
+      {/*
+        Now, fields.content is treated as a plain string.
+        We display it directly within a <p> tag for formatting.
+        The `prose` class will still apply some default text styles to this <p> tag.
+      */}
       <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-        {/*
-          CRITICAL FIX HERE:
-          Check if fields.content is a valid object AND has a 'content' property that is an array.
-          Only then attempt to render it. Otherwise, show the fallback message.
-        */}
-        {fields.content && Array.isArray(fields.content.content) ? (
-          documentToReactComponents(fields.content, richTextOptions)
+        {fields.content ? (
+          <p className="text-gray-600 leading-relaxed">{fields.content}</p>
         ) : (
           <p className="text-gray-600 italic">No detailed content available for this post yet.</p>
         )}
