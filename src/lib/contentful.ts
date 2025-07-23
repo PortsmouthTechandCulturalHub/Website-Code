@@ -24,7 +24,8 @@ export async function getAllBlogPosts() {
   "sys.id",
   "fields.title",
   "fields.description",
-  "fields.coverImage"
+  "fields.coverImage",
+  "fields.content;"
 ],
 
     });
