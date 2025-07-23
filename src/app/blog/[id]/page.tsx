@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { notFound } from "next/navigation";
-
 import { contentfulClient } from "@/lib/contentful";
 
 export default async function BlogPage({ params }: { params: { id: string } }) {
