@@ -1,5 +1,3 @@
-// src/app/blog/[id]/page.tsx
-
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -24,26 +22,26 @@ export default async function BlogPostPage({ params }: any) {
         title: string;
       };
     };
-    content: string; // Type confirmed as string
+    content: string;
   };
 
   return (
-    // Increased py-20 for more top/bottom padding
     <div className="container mx-auto px-4 py-20 max-w-3xl">
       {fields.coverImage?.fields?.file?.url && (
-        // The aspect-video class defines the container's 16:9 shape.
-        <div className="relative w-full aspect-video mb-8 overflow-hidden rounded-lg shadow-lg">
-          <Image
-            src={`https:${fields.coverImage.fields.file.url}`}
-            alt={fields.coverImage.fields.title || fields.title}
-            fill
-            // CHANGED: objectFit="cover" to make the image fill the container, accepting cropping.
-            style={{ objectFit: "cover" }}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
-            priority
-          />
+        <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg bg-black">
+          <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px]">
+            <Image
+              src={`https:${fields.coverImage.fields.file.url}`}
+              alt={fields.coverImage.fields.title || fields.title}
+              fill
+              style={{ objectFit: "contain" }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
+              priority
+            />
+          </div>
         </div>
       )}
+
       <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{fields.title}</h1>
       <p className="text-xl text-gray-600 mb-8">{fields.description}</p>
 
