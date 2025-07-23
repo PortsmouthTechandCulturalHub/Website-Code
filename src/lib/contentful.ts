@@ -20,7 +20,13 @@ export async function getAllBlogPosts() {
   try {
     const entries = await client.getEntries({
       content_type: "blogPost", // Replace with your Contentful Content Type ID for blog posts
-      select: "sys.id,fields.title,fields.description,fields.coverImage", // Select fields needed for the preview
+      select: [
+  "sys.id",
+  "fields.title",
+  "fields.description",
+  "fields.coverImage"
+],
+
     });
     return entries.items;
   } catch (error) {
