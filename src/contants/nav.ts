@@ -33,15 +33,12 @@ export const NAV: NavType[] = [
 export const SERVICIES: NavType[] = [
   {
     title: "Help center",
-    link: "/help-center",
+    link: "/contact-us",
   },
  
   {
     title: "Privacy policy",
     link: "/privacy-policy",
   },
-  {
-    title: "Status",
-    link: "/status",
-  },
+
 ];
