@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
-import { teams } from "@/app/about-us/variables";
+import React, { useState } from "react";
+
 import SectionTitle from "@/components/common/section-title";
+import { teams } from "@/app/about-us/variables";
+
 
 export default function Teams() {
   const [expanded, setExpanded] = useState<number | null>(null);
