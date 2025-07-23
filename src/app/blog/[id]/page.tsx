@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 //import { contentfulClient } from "@/lib/contentful";
-import { contentfulClient } from "../../../lib/contentful";
+//import { contentfulClient } from "../../../lib/contentful";
+import { contentfulClient } from "@/lib/contentful";
+
 
 
 interface BlogPageProps {
