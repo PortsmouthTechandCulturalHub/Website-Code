@@ -1,3 +1,5 @@
+// src/app/blog/[id]/page.tsx
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
@@ -126,31 +128,6 @@ export default async function BlogPostPage({ params }: any) {
     content: any; // Contentful Rich Text field's data (JSON object)
   };
 
-  // --- FIX APPLIED HERE: Do NOT attempt to render content if it's missing/empty ---
-  if (!fields.content || !fields.content.content || fields.content.content.length === 0) {
-    return (
-      <div className="container mx-auto px-4 py-12 max-w-3xl">
-        {fields.coverImage?.fields?.file?.url && (
-          <div className="relative w-full aspect-video mb-8 overflow-hidden rounded-lg shadow-lg">
-            <Image
-              src={`https:${fields.coverImage.fields.file.url}`}
-              alt={fields.coverImage.fields.title || fields.title}
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
-              priority // Load cover image with high priority
-            />
-          </div>
-        )}
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{fields.title}</h1>
-        <p className="text-xl text-gray-600 mb-8">{fields.description}</p>
-        {/* Display the fallback message, not documentToReactComponents */}
-        <p className="text-gray-600 italic">No detailed content available for this post yet.</p>
-      </div>
-    );
-  }
-
-  // --- This is the main content rendering path ---
   return (
     <div className="container mx-auto px-4 py-12 max-w-3xl">
       {fields.coverImage?.fields?.file?.url && (
@@ -167,8 +144,19 @@ export default async function BlogPostPage({ params }: any) {
       )}
       <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{fields.title}</h1>
       <p className="text-xl text-gray-600 mb-8">{fields.description}</p>
+
       <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-        {documentToReactComponents(fields.content, richTextOptions)}
+        {/*
+          This uses a ternary operator:
+          If fields.content is null or undefined, it shows the "No detailed content" message.
+          Otherwise (if it's an object, even an empty Rich Text object),
+          it attempts to render it with documentToReactComponents.
+        */}
+        {fields.content === null || fields.content === undefined ? (
+          <p className="text-gray-600 italic">No detailed content available for this post yet.</p>
+        ) : (
+          documentToReactComponents(fields.content, richTextOptions)
+        )}
       </div>
     </div>
   );
