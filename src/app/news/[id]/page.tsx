@@ -1,11 +1,11 @@
 // src/app/news/[id]/page.tsx
 
-import Image from "next/image"; // Next.js imports first
-import { notFound } from "next/navigation"; // Next.js imports
-import { format } from "date-fns"; // Other external libraries (no empty line between external imports)
-import React from "react"; // React comes after all other external libraries
+import { format } from "date-fns"; // Moved this line UP to before next/image
+import Image from "next/image"; // Now comes after date-fns
+import { notFound } from "next/navigation"; // Remains here, after Image
+import React from "react"; // React stays after all other external libs
 
-import { getBlogPost } from "@/lib/contentful"; // Separate group for local aliases
+import { getBlogPost } from "@/lib/contentful"; // Local aliases remain in their own group
 
 interface Props {
   params: {
