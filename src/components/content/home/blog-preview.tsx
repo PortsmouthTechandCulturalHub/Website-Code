@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import React from "react";
-
+import Link from "next/link";
 import SectionTitle from "@/components/common/section-title";
 import Button from "@/components/ui/button";
 
 interface Props {
   blogs: Blog[];
 }
+
 export default function BlogPreview({ blogs }: Props) {
   return (
     <>
@@ -22,10 +23,11 @@ export default function BlogPreview({ blogs }: Props) {
                 className="w-full overflow-hidden rounded-lg bg-white shadow-md"
               >
                 <div className="aspect-5/3 w-full overflow-hidden bg-gray-200">
-                  {item.coverImage.src && (
+                  {item.coverImage?.src && (
                     <Image
                       {...item.coverImage}
                       className="size-full object-cover sm:object-[0%_20%]"
+                      alt={item.title}
                     />
                   )}
                 </div>
@@ -38,7 +40,9 @@ export default function BlogPreview({ blogs }: Props) {
                       {item.description}
                     </p>
                   </div>
-                  <Button children="Read more" />
+                  <Link href={`/blog/${item.sys.id}`}>
+                    <Button>Read more</Button>
+                  </Link>
                 </div>
               </div>
             ))}

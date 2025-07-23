@@ -9,6 +9,7 @@ type Blog = {
   sys: {
     id: string;
   };
+  slug: string;
   title: string;
   content?: string;
   publishDate: Date;
