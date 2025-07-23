@@ -129,7 +129,9 @@ export default async function BlogPostPage({ params }: any) {
         )}
         <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{fields.title}</h1>
         <p className="text-xl text-gray-600 mb-8">{fields.description}</p>
-        <p className="text-gray-600 italic">{fields.content}</p>
+        <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
+  {documentToReactComponents(fields.content, richTextOptions)}
+</div>
       </div>
     );
   }
