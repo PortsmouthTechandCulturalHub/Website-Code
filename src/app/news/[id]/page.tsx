@@ -1,11 +1,9 @@
-// src/app/news/[id]/page.tsx
+import { format } from "date-fns";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import React from "react";
 
-import { format } from "date-fns"; // Moved this line UP to before next/image
-import Image from "next/image"; // Now comes after date-fns
-import { notFound } from "next/navigation"; // Remains here, after Image
-import React from "react"; // React stays after all other external libs
-
-import { getBlogPost } from "@/lib/contentful"; // Local aliases remain in their own group
+import { getBlogPost } from "@/lib/contentful";
 
 interface Props {
   params: {
@@ -44,25 +42,33 @@ export default async function NewsDetailPage({ params }: Props) {
     publishDate: string;
   };
 
-  return (
-    <div className="container mx-auto px-4 py-12 mt-10 max-w-3xl">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{title}</h1>
-        <p className="text-xl text-gray-600 mb-8">
-          By {author} · {format(new Date(publishDate), "PPP")}
-        </p>
+  const imageUrl = coverImage?.fields?.file?.url
+    ? `https:${coverImage.fields.file.url}`
+    : null;
 
-      {coverImage?.fields?.file?.url && (
-        <div className="w-full h-80 relative mb-8 rounded-lg overflow-hidden shadow-lg">
+  const imageWidth = coverImage?.fields?.file?.details?.image?.width || 800;
+  const imageHeight = coverImage?.fields?.file?.details?.image?.height || 500;
+
+  return (
+    <div className="container mx-auto px-4 py-24 max-w-3xl">
+      {imageUrl && (
+        <div className="w-full mb-8 rounded-lg overflow-hidden shadow-lg">
           <Image
-            src={`https:${coverImage.fields.file.url}`}
-            alt={coverImage.fields.title || title}
-            fill
-            className="object-cover"
+            src={imageUrl}
+            alt={coverImage?.fields?.title || title}
+            width={imageWidth}
+            height={imageHeight}
+            className="w-full h-auto rounded-lg"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
             priority
           />
         </div>
       )}
+
+      <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{title}</h1>
+      <p className="text-xl text-gray-600 mb-8">
+        By {author} · {format(new Date(publishDate), "PPP")}
+      </p>
 
       <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
         {description && <p className="mb-4">{description}</p>}
