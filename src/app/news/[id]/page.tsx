@@ -1,9 +1,13 @@
-// news/[id]/page.tsx
-import { getBlogPost } from "@/lib/contentful"; // Assuming getBlogPost fetches news posts too
-import { format } from "date-fns";
-import Image from "next/image";
+// src/app/news/[id]/page.tsx
+
+import React from "react"; // Core React import first
+
+import Image from "next/image"; // Next.js specific imports
 import { notFound } from "next/navigation";
-import React from "react"; // Ensure React is imported for JSX
+
+import { format } from "date-fns"; // Other external libraries
+
+import { getBlogPost } from "@/lib/contentful"; // Your internal/aliased imports last
 
 interface Props {
   params: {
@@ -12,27 +16,23 @@ interface Props {
 }
 
 export default async function NewsDetailPage({ params }: Props) {
-  // Assuming getBlogPost is used for news posts as well.
-  // If you have a separate getNewsPost in contentful.ts, use that instead.
   const post = await getBlogPost(params.id);
 
   if (!post) {
-    // If the post is not found, render Next.js's notFound page
     return notFound();
   }
 
-  // Destructure fields with type assertions for clarity and safety
   const {
     title,
-    description, // Assuming description is also a plain string
-    content,     // Confirmed as a plain string
+    description,
+    content,
     coverImage,
-    author,      // Assuming author is a string
-    publishDate, // Assuming publishDate is a string parsable by new Date()
+    author,
+    publishDate,
   } = post.fields as {
     title: string;
     description: string;
-    content: string; // Plain string content
+    content: string;
     coverImage?: {
       fields: {
         file: {
@@ -47,33 +47,27 @@ export default async function NewsDetailPage({ params }: Props) {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-3xl"> {/* Adjusted container classes for consistency */}
+    <div className="container mx-auto px-4 py-12 max-w-3xl">
       <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{title}</h1>
-      {/* Display author and formatted publish date */}
       <p className="text-xl text-gray-600 mb-8">
         By {author} · {format(new Date(publishDate), "PPP")}
       </p>
 
-      {/* Conditional rendering for the cover image */}
       {coverImage?.fields?.file?.url && (
-        <div className="w-full h-80 relative mb-8 rounded-lg overflow-hidden shadow-lg"> {/* Added mb-8 for spacing */}
+        <div className="w-full h-80 relative mb-8 rounded-lg overflow-hidden shadow-lg">
           <Image
             src={`https:${coverImage.fields.file.url}`}
-            alt={coverImage.fields.title || title} // Use post title as fallback for alt text
+            alt={coverImage.fields.title || title}
             fill
-            className="object-cover" // object-cover will crop the image to fill the container
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px" // Responsive image sizes
-            priority // Prioritize loading for LCP
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
+            priority
           />
         </div>
       )}
 
-      {/* Render the main content */}
       <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-        {/* The description can be a separate paragraph */}
         {description && <p className="mb-4">{description}</p>}
-        
-        {/* Render the main 'content' field as a plain string */}
         {content ? (
           <p className="text-gray-800 leading-relaxed">{content}</p>
         ) : (

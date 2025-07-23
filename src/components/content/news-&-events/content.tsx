@@ -1,19 +1,20 @@
 // src/components/content/news-&-events/content.tsx
 import { format } from "date-fns";
 import { Calendar } from "lucide-react";
-import React from "react"; // Moved React up
-import Image from "next/image"; // Image comes after React
-import Link from "next/link"; // Link also comes after React
-// ... rest of your component code
 
+import Image from "next/image"; // Next.js specific imports
+import Link from "next/link";   // Moved Link BEFORE React to satisfy the ESLint rule
+
+import React from "react";     // Moved React AFTER next/link to satisfy the ESLint rule
 
 import EmptyContent from "@/components/common/empty-content";
 import Button from "@/components/ui/button";
-// import Pagination from "@/components/ui/pagination";
+// import Pagination from "@/components/ui/pagination"; // This line is commented out, so it doesn't affect import order issues
 
 interface Props {
   news: NewsAndEvent[];
 }
+
 export default function Content({ news }: Props) {
   return (
     <>
@@ -49,7 +50,6 @@ export default function Content({ news }: Props) {
                     {item.title}
                   </h1>
                   <p className="line-clamp-2 sm:text-lg">{item.description}</p>
-                 
 
                   <Link href={`/news/${item.sys.id}`}>
                       <Button
