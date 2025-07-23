@@ -147,15 +147,14 @@ export default async function BlogPostPage({ params }: any) {
 
       <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
         {/*
-          This uses a ternary operator:
-          If fields.content is null or undefined, it shows the "No detailed content" message.
-          Otherwise (if it's an object, even an empty Rich Text object),
-          it attempts to render it with documentToReactComponents.
+          CRITICAL FIX HERE:
+          Check if fields.content is a valid object AND has a 'content' property that is an array.
+          Only then attempt to render it. Otherwise, show the fallback message.
         */}
-        {fields.content === null || fields.content === undefined ? (
-          <p className="text-gray-600 italic">No detailed content available for this post yet.</p>
-        ) : (
+        {fields.content && Array.isArray(fields.content.content) ? (
           documentToReactComponents(fields.content, richTextOptions)
+        ) : (
+          <p className="text-gray-600 italic">No detailed content available for this post yet.</p>
         )}
       </div>
     </div>
