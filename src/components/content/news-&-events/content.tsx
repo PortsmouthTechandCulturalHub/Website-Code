@@ -1,8 +1,10 @@
+// src/components/content/news-&-events/content.tsx
 import { format } from "date-fns";
 import { Calendar } from "lucide-react";
-import Image from "next/image";
-import React from "react";
-import Link from "next/link";
+import React from "react"; // Moved React up
+import Image from "next/image"; // Image comes after React
+import Link from "next/link"; // Link also comes after React
+// ... rest of your component code
 
 
 import EmptyContent from "@/components/common/empty-content";
