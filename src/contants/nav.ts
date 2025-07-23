@@ -35,14 +35,7 @@ export const SERVICIES: NavType[] = [
     title: "Help center",
     link: "/help-center",
   },
-  {
-    title: "Terms of service",
-    link: "/terms-of-service",
-  },
-  {
-    title: "Legal",
-    link: "/legal",
-  },
+ 
   {
     title: "Privacy policy",
     link: "/privacy-policy",

@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
+
 import SectionTitle from "@/components/common/section-title";
+
 
 export default function PrivacyPolicyPage() {
   return (
