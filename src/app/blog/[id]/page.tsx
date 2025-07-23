@@ -3,11 +3,11 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { contentfulClient } from "@/lib/contentful";
 
-interface PageProps {
+export default async function BlogPage({
+  params,
+}: {
   params: { id: string };
-}
-
-export default async function BlogPage({ params }: PageProps) {
+}) {
   try {
     const entry = await contentfulClient.getEntry(params.id);
 
@@ -20,6 +20,8 @@ export default async function BlogPage({ params }: PageProps) {
       coverImage: {
         src: `https:${entry.fields.coverImage.fields.file.url}`,
         alt: entry.fields.coverImage.fields.title || "Cover Image",
+        width: entry.fields.coverImage.fields.file.details.image.width,
+        height: entry.fields.coverImage.fields.file.details.image.height,
       },
     };
 
@@ -30,8 +32,8 @@ export default async function BlogPage({ params }: PageProps) {
             <Image
               src={blog.coverImage.src}
               alt={blog.coverImage.alt}
-              width={1200}
-              height={800}
+              width={blog.coverImage.width}
+              height={blog.coverImage.height}
               className="size-full object-cover sm:object-[0%_20%]"
             />
           </div>
