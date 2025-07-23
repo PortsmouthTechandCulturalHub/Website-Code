@@ -1,5 +1,3 @@
-// src/app/blog/[id]/page.tsx
-
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
@@ -12,29 +10,44 @@ const richTextOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
       const { target } = node.data;
-      const { file, title } = target?.fields || {};
+      const file = target?.fields?.file;
+      const title = target?.fields?.title;
+
+      // Safely access image details and check if width/height are valid
       if (file?.url && file?.details?.image) {
         const imageUrl = `https:${file.url}`;
         const { width, height } = file.details.image;
-        return (
-          <figure className="my-6">
-            <Image
-              src={imageUrl}
-              alt={title || "Embedded Asset"}
-              width={width}
-              height={height}
-              className="rounded-lg object-cover w-full h-auto"
-              sizes="(max-width: 768px) 100vw, 700px"
-            />
-            {title && (
-              <figcaption className="text-center text-sm text-gray-500 mt-2">
-                {title}
-              </figcaption>
-            )}
-          </figure>
-        );
+
+        // Ensure width and height are positive numbers before passing to next/image
+        if (typeof width === 'number' && typeof height === 'number' && width > 0 && height > 0) {
+          return (
+            <figure className="my-6">
+              <Image
+                src={imageUrl}
+                alt={title || "Embedded Asset"}
+                width={width}
+                height={height}
+                className="rounded-lg object-cover w-full h-auto"
+                sizes="(max-width: 768px) 100vw, 700px"
+              />
+              {title && (
+                <figcaption className="text-center text-sm text-gray-500 mt-2">
+                  {title}
+                </figcaption>
+              )}
+            </figure>
+          );
+        } else {
+          // Log a warning if dimensions are invalid, and return null or a fallback div
+          console.warn(`Contentful Embedded Asset: Invalid dimensions for "${title || 'Untitled Asset'}". URL: ${imageUrl}, Width: ${width}, Height: ${height}`);
+          return (
+            <div className="text-red-500 bg-red-100 p-2 rounded">
+              <p>Image failed to load for "{title || 'Embedded Asset'}" (invalid dimensions).</p>
+            </div>
+          );
+        }
       }
-      return null;
+      return null; // Return null if file or image details are missing
     },
     [INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => {
       const { uri } = node.data;
@@ -91,7 +104,7 @@ const richTextOptions = {
   },
 };
 
-// Use `any` to avoid Vercel's type conflict at build
+// Use `any` to avoid Vercel's type conflict at build (as a temporary workaround)
 export default async function BlogPostPage({ params }: any) {
   const { id } = params;
   const blogPost = await getBlogPost(id);
@@ -110,12 +123,13 @@ export default async function BlogPostPage({ params }: any) {
         title: string;
       };
     };
-    content: any;
+    content: any; // Contentful Rich Text field's data (JSON object)
   };
 
-  if (!fields.content || !fields.content.content) {
+  // --- FIX APPLIED HERE: Do NOT attempt to render content if it's missing/empty ---
+  if (!fields.content || !fields.content.content || fields.content.content.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
+      <div className="container mx-auto px-4 py-12 max-w-3xl">
         {fields.coverImage?.fields?.file?.url && (
           <div className="relative w-full aspect-video mb-8 overflow-hidden rounded-lg shadow-lg">
             <Image
@@ -124,20 +138,21 @@ export default async function BlogPostPage({ params }: any) {
               fill
               style={{ objectFit: "cover" }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
+              priority // Load cover image with high priority
             />
           </div>
         )}
         <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{fields.title}</h1>
         <p className="text-xl text-gray-600 mb-8">{fields.description}</p>
-        <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-  {documentToReactComponents(fields.content, richTextOptions)}
-</div>
+        {/* Display the fallback message, not documentToReactComponents */}
+        <p className="text-gray-600 italic">No detailed content available for this post yet.</p>
       </div>
     );
   }
 
+  // --- This is the main content rendering path ---
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
+    <div className="container mx-auto px-4 py-12 max-w-3xl">
       {fields.coverImage?.fields?.file?.url && (
         <div className="relative w-full aspect-video mb-8 overflow-hidden rounded-lg shadow-lg">
           <Image
@@ -153,7 +168,6 @@ export default async function BlogPostPage({ params }: any) {
       <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{fields.title}</h1>
       <p className="text-xl text-gray-600 mb-8">{fields.description}</p>
       <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-        
         {documentToReactComponents(fields.content, richTextOptions)}
       </div>
     </div>
