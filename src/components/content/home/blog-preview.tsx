@@ -18,7 +18,7 @@ interface Props {
 export default function BlogPreview({ blogs }: Props) {
   return (
     <>
-      {blogs.length > 0 && (
+      {blogs && blogs.length > 0 && (
         <div className="flex w-full flex-col gap-8 px-pg py-7">
           <SectionTitle childern="Blogs" />
           <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
