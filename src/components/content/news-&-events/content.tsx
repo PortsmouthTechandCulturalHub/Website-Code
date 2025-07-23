@@ -1,13 +1,12 @@
 // src/components/content/news-&-events/content.tsx
-import { format } from "date-fns";
+
+import { format } from "date-fns"; // External libraries, no empty line between them
 import { Calendar } from "lucide-react";
+import Image from "next/image";   // Next.js specific
+import Link from "next/link";     // Link before React (as per specific rule for this file)
+import React from "react";       // React after Link (as per specific rule for this file)
 
-import Image from "next/image"; // Next.js specific imports
-import Link from "next/link";   // Moved Link BEFORE React to satisfy the ESLint rule
-
-import React from "react";     // Moved React AFTER next/link to satisfy the ESLint rule
-
-import EmptyContent from "@/components/common/empty-content";
+import EmptyContent from "@/components/common/empty-content"; // Separate group for local aliases
 import Button from "@/components/ui/button";
 // import Pagination from "@/components/ui/pagination"; // This line is commented out, so it doesn't affect import order issues
 

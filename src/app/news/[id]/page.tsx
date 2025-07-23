@@ -1,13 +1,11 @@
 // src/app/news/[id]/page.tsx
 
-import React from "react"; // Core React import first
+import Image from "next/image"; // Next.js imports first
+import { notFound } from "next/navigation"; // Next.js imports
+import { format } from "date-fns"; // Other external libraries (no empty line between external imports)
+import React from "react"; // React comes after all other external libraries
 
-import Image from "next/image"; // Next.js specific imports
-import { notFound } from "next/navigation";
-
-import { format } from "date-fns"; // Other external libraries
-
-import { getBlogPost } from "@/lib/contentful"; // Your internal/aliased imports last
+import { getBlogPost } from "@/lib/contentful"; // Separate group for local aliases
 
 interface Props {
   params: {
