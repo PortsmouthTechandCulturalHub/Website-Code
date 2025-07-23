@@ -258,13 +258,7 @@ export default function PrivacyPolicyPage() {
             CIC) may need to make changes to this Privacy & Cookie Policy.
           </p>
 
-           <h3 className="text-lg font-semibold text-gray-800">
-            Our Policies
-          </h3>
-          <p>
-            Policies such as data protection, equality, diversity and inclusion, health and safety, safeguarding children policy, safeguarding adult policy, whistleblowing policy, comments complaints and feedback policy will be on one page, see Urbond website policies.
-
-          </p>
+         
         </div>
       </div>
     </div>
