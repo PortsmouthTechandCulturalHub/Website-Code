@@ -25,20 +25,26 @@ export default async function BlogPostPage({ params }: any) {
     content: string;
   };
 
+  const imageUrl = fields.coverImage?.fields?.file?.url
+    ? `https:${fields.coverImage.fields.file.url}`
+    : null;
+
+  const imageWidth = fields.coverImage?.fields?.file?.details?.image?.width || 800;
+  const imageHeight = fields.coverImage?.fields?.file?.details?.image?.height || 600;
+
   return (
     <div className="container mx-auto px-4 py-20 max-w-3xl">
-      {fields.coverImage?.fields?.file?.url && (
-        <div className="w-full mb-8 overflow-hidden rounded-lg shadow-lg bg-black">
-          <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px]">
-            <Image
-              src={`https:${fields.coverImage.fields.file.url}`}
-              alt={fields.coverImage.fields.title || fields.title}
-              fill
-              style={{ objectFit: "contain" }}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
-              priority
-            />
-          </div>
+      {imageUrl && (
+        <div className="w-full mb-8 rounded-lg overflow-hidden shadow-lg">
+          <Image
+            src={imageUrl}
+            alt={fields.coverImage?.fields.title || fields.title}
+            width={imageWidth}
+            height={imageHeight}
+            className="w-full h-auto rounded-lg"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
+            priority
+          />
         </div>
       )}
 
