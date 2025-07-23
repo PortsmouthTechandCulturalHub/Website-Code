@@ -45,22 +45,19 @@ export default function Content({ news }: Props) {
                   </div>
                 </div>
                 <div className="flex w-full flex-col gap-4">
-                 
+                  <h1 className="line-clamp-2 text-lg font-semibold sm:text-xl">
+                    {item.title}
+                  </h1>
 
-                  <h1 className="mt-4 line-clamp-2 text-lg font-semibold sm:text-xl">
-  {item.title}
-</h1>
-
+                  
                   <p className="line-clamp-2 sm:text-lg">{item.description}</p>
 
-                  <Link href={`/news/${item.sys.id}`}>
-                      <Button
-                        varient="light"
-                        className="!bg-white p-0 text-lg capitalize text-primary transition-colors hover:text-secondary"
-                      >
-                        Read more ...
-                      </Button>
-                    </Link>
+                 <Link href={`/news/${item.sys.id}`}>
+                    <Button className="text-white bg-primary hover:bg-secondary px-6 py-2 rounded-md text-base font-medium transition">
+                      Read more
+                    </Button>
+                  </Link>
+
 
                 </div>
               </div>
