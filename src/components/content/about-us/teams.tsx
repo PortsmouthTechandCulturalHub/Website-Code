@@ -8,6 +8,7 @@ import SectionTitle from "@/components/common/section-title";
 
 
 
+
 export default function Teams() {
   const [expanded, setExpanded] = useState<number | null>(null);
 

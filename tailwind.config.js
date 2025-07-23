@@ -1,5 +1,5 @@
-const plugin = require("tailwindcss/plugin");
 const { heroui } = require("@heroui/react");
+const plugin = require("tailwindcss/plugin");
 
 const capitalizeFirst = plugin(function ({ addUtilities }) {
   const newUtilities = {
