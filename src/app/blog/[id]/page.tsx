@@ -17,7 +17,7 @@ const richTextOptions = {
         const imageUrl = `https:${file.url}`;
         const { width, height } = file.details.image;
         return (
-          <figure className="my-6">
+          <figure className="my-8">
             <Image
               src={imageUrl}
               alt={title || "Embedded Asset"}
