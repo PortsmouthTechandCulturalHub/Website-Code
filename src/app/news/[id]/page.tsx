@@ -45,11 +45,11 @@ export default async function NewsDetailPage({ params }: Props) {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-3xl">
-      <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{title}</h1>
-      <p className="text-xl text-gray-600 mb-8">
-        By {author} · {format(new Date(publishDate), "PPP")}
-      </p>
+    <div className="container mx-auto px-4 py-12 mt-10 max-w-3xl">
+        <h1 className="text-4xl font-extrabold text-gray-900 mb-4">{title}</h1>
+        <p className="text-xl text-gray-600 mb-8">
+          By {author} · {format(new Date(publishDate), "PPP")}
+        </p>
 
       {coverImage?.fields?.file?.url && (
         <div className="w-full h-80 relative mb-8 rounded-lg overflow-hidden shadow-lg">
