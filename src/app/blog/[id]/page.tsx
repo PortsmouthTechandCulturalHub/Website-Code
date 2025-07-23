@@ -1,10 +1,14 @@
 /* eslint-disable import/order */
-
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { contentfulClient } from "@/lib/contentful";
 
-export default async function BlogPage({ params }: { params: { id: string } }) {
+// ✅ No "use client" here — this is a server component
+interface PageProps {
+  params: { id: string };
+}
+
+export default async function BlogPage({ params }: PageProps) {
   try {
     const entry = await contentfulClient.getEntry(params.id);
 
