@@ -6,7 +6,7 @@ export const hero: HeroTypes = {
     alt: "about us",
   },
   title: "About us",
-  desc: "PORTSMOUTH TECH & CULTURAL HUB: Cultivating Digital Talent Since 2024",
+  desc: "PORTSMOUTH TECH & CULTURAL HUB: Cultivating Digital Talents in Portsmouth, South Coast, and across the Globe.",
 };
 
 export type AboutTypes = {
