@@ -2,6 +2,8 @@ import { format } from "date-fns";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
+
 
 import EmptyContent from "@/components/common/empty-content";
 import Button from "@/components/ui/button";
@@ -45,11 +47,17 @@ export default function Content({ news }: Props) {
                     {item.title}
                   </h1>
                   <p className="line-clamp-2 sm:text-lg">{item.description}</p>
-                  <Button
-                    varient="light"
-                    className="!bg-white p-0 text-lg capitalize text-primary transition-colors hover:text-secondary"
-                    children="Read more ..."
-                  />
+                 
+
+                  <Link href={`/news/${item.sys.id}`}>
+                      <Button
+                        varient="light"
+                        className="!bg-white p-0 text-lg capitalize text-primary transition-colors hover:text-secondary"
+                      >
+                        Read more ...
+                      </Button>
+                    </Link>
+
                 </div>
               </div>
             ))}

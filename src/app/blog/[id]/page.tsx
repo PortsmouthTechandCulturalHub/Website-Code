@@ -31,17 +31,14 @@ export default async function BlogPostPage({ params }: any) {
     // Increased py-20 for more top/bottom padding
     <div className="container mx-auto px-4 py-20 max-w-3xl">
       {fields.coverImage?.fields?.file?.url && (
-        // RE-ADDED aspect-video to give the container height for `fill` to work.
-        // Combined with objectFit="contain", the image will be fully visible within this 16:9 box.
+        // The aspect-video class defines the container's 16:9 shape.
         <div className="relative w-full aspect-video mb-8 overflow-hidden rounded-lg shadow-lg">
           <Image
             src={`https:${fields.coverImage.fields.file.url}`}
             alt={fields.coverImage.fields.title || fields.title}
             fill
-            // objectFit="contain" ensures the entire image is always visible,
-            // even if it means displaying black bars (letterboxing/pillarboxing)
-            // within the 16:9 container if the aspect ratios don't match.
-            style={{ objectFit: "contain" }}
+            // CHANGED: objectFit="cover" to make the image fill the container, accepting cropping.
+            style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 700px"
             priority
           />
