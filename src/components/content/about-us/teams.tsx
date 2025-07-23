@@ -10,11 +10,12 @@ import SectionTitle from "@/components/common/section-title";
 
 
 export default function Teams() {
-  const [expanded, setExpanded] = useState<number | null>(null);
+ 
+  const [expanded, setExpanded] = useState<string | number | null>(null);
 
-  const toggleBio = (id: number | string) => {
-    setExpanded((prev) => (prev === id ? null : id));
-  };
+const toggleBio = (id: number | string) => {
+  setExpanded((prev) => (prev === id ? null : id));
+};
 
   const getPreview = (text: string, wordLimit: number = 25) => {
     const words = text.split(" ");
