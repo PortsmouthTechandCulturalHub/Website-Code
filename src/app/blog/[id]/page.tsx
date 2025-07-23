@@ -3,7 +3,6 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { contentfulClient } from "@/lib/contentful";
 
-// ✅ No "use client" here — this is a server component
 interface PageProps {
   params: { id: string };
 }
