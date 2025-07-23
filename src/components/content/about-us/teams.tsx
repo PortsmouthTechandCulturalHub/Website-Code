@@ -3,8 +3,9 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-import SectionTitle from "@/components/common/section-title";
 import { teams } from "@/app/about-us/variables";
+import SectionTitle from "@/components/common/section-title";
+
 
 
 export default function Teams() {
