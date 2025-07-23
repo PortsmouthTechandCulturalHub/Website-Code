@@ -1,5 +1,6 @@
-import { notFound } from "next/navigation";
 import Image from "next/image";
+import { notFound } from "next/navigation";
+
 import { contentfulClient } from "@/lib/contentful";
 import type { Blog } from "@/types/app"; // ✅ Import type explicitly
 
