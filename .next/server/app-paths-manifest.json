@@ -1,3 +1,13 @@
 {
-  "/page": "app/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/blog/[id]/page": "app/blog/[id]/page.js",
+  "/page": "app/page.js",
+  "/privacy-policy/page": "app/privacy-policy/page.js",
+  "/news/[id]/page": "app/news/[id]/page.js",
+  "/news-&-events/page": "app/news-&-events/page.js",
+  "/our-work/page": "app/our-work/page.js",
+  "/contact-us/page": "app/contact-us/page.js",
+  "/about-us/page": "app/about-us/page.js",
+  "/get-involved/page": "app/get-involved/page.js"
 }

@@ -8,9 +8,6 @@ import React from "react";
 import SectionTitle from "@/components/common/section-title";
 import Button from "@/components/ui/button";
 
-
-
-
 interface Props {
   blogs: Blog[];
 }
