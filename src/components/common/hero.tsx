@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {useCallback } from "react";
+import { useCallback } from "react";
 import React from "react";
 
 import { cn } from "@/lib/utils";

@@ -7,7 +7,7 @@ import WhoWeAre from "@/components/content/about-us/who-we-are";
 
 export const metadata = {
   title: "About us",
-  description: "PORTSMOUTH TECH & CULTURAL HUB: Cultivating Digital Talent Since 2024",
+  description: "PORTSMOUTH TECH & CULTURAL HUB: Cultivating Digital Talents in Portsmouth, South Coast, and across the Globe.",
 };
 
 export default function AboutUs() {

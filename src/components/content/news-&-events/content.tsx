@@ -1,15 +1,19 @@
-import { format } from "date-fns";
-import { Calendar } from "lucide-react";
-import Image from "next/image";
-import React from "react";
+// src/components/content/news-&-events/content.tsx
 
-import EmptyContent from "@/components/common/empty-content";
+import { format } from "date-fns"; // External libraries, no empty line between them
+import { Calendar } from "lucide-react";
+import Image from "next/image";   // Next.js specific
+import Link from "next/link";     // Link before React (as per specific rule for this file)
+import React from "react";       // React after Link (as per specific rule for this file)
+
+import EmptyContent from "@/components/common/empty-content"; // Separate group for local aliases
 import Button from "@/components/ui/button";
-// import Pagination from "@/components/ui/pagination";
+// import Pagination from "@/components/ui/pagination"; // This line is commented out, so it doesn't affect import order issues
 
 interface Props {
   news: NewsAndEvent[];
 }
+
 export default function Content({ news }: Props) {
   return (
     <>
@@ -44,12 +48,17 @@ export default function Content({ news }: Props) {
                   <h1 className="line-clamp-2 text-lg font-semibold sm:text-xl">
                     {item.title}
                   </h1>
+
+                  
                   <p className="line-clamp-2 sm:text-lg">{item.description}</p>
-                  <Button
-                    varient="light"
-                    className="!bg-white p-0 text-lg capitalize text-primary transition-colors hover:text-secondary"
-                    children="Read more ..."
-                  />
+
+                 <Link href={`/news/${item.sys.id}`}>
+                    <Button className="text-white bg-primary hover:bg-secondary px-6 py-2 rounded-md text-base font-medium transition">
+                      Read more
+                    </Button>
+                  </Link>
+
+
                 </div>
               </div>
             ))}

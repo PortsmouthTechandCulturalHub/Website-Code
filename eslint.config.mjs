@@ -30,7 +30,8 @@ const eslintConfig = [
             {
               target: "**/*",
               from: "./*",
-              message: "Avoid using './' for sibling imports. Use absolute imports with '@/' instead.",
+              message:
+                "Avoid using './' for sibling imports. Use absolute imports with '@/' instead.",
             },
           ],
         },

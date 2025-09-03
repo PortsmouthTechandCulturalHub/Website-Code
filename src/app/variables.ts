@@ -29,7 +29,7 @@ export type Values = {
 };
 
 export const values: Values = {
-  desc: "Portsmouth Tech and Cultural Hub CIC is a not-for-profit organisation supporting access to technology, culture, and skills in Portsmouth and beyond. Registered in England and Wales",
+  desc: "Portsmouth Tech and Cultural Hub CIC is a not-for-profit organisation with registeration number 16408734 which supports access to digital and creative technology, digital skills acquistion and mentorship in Portsmouth and beyond. Registered in England and Wales",
   values: [
     {
       id: 0,
@@ -106,8 +106,8 @@ export const stat: Stat[] = [
       height: 85,
       alt: "group-fill",
     },
-    title: "1885+",
-    desc: "Our programs have equipped over 1885 individuals with valuable skills and knowledge, enabling them to build more sustainable livelihoods.",
+    title: "1500+",
+    desc: "Our programs have equipped over 1500 individuals with valuable skills and knowledge, enabling them to build more sustainable livelihoods.",
   },
   {
     id: 1,
@@ -117,8 +117,8 @@ export const stat: Stat[] = [
       height: 85,
       alt: "24-hour-fill",
     },
-    title: "2067+",
-    desc: "We've fostered long-term relationships with over 2067 community members who have benefited from our sustained support and engagement over the years.",
+    title: "2500+",
+    desc: "We have fostered long term relationships with over 2500 community members who have benefited from our sustained support and engagements over the last 2 years.",
   },
   {
     id: 2,
@@ -128,8 +128,8 @@ export const stat: Stat[] = [
       height: 85,
       alt: "basketball-fill",
     },
-    title: "507+",
-    desc: "Through our various programs, we directly impact the lives of over 507 community members annually, providing vital resources and opportunities for growth.",
+    title: "1000+",
+    desc: "Through our various programs, we directly impact the lives of over 1000 community members annually, providing vital resources and opportunities for growth.",
   },
   {
     id: 3,
@@ -139,7 +139,7 @@ export const stat: Stat[] = [
       height: 85,
       alt: "person-fill",
     },
-    title: "186+",
+    title: "50+",
     desc: "We are grateful for the support of our partners who believe in our mission and help us make a tangible difference in the lives of those we serve.",
   },
 ];
